@@ -19,7 +19,7 @@ class HomeCardVeiculo extends StatelessWidget {
               leading: const Icon(Icons.car_repair_sharp),
               title: Text('${veiculo?.modelo}'),
               trailing: const Icon(Icons.arrow_forward_ios),
-              subtitle: Text('${veiculo?.placa} - ${veiculo?.ano}'),
+              subtitle: Text('${veiculo?.placa} - ${veiculo?.marca}'),
             );
       },
     );

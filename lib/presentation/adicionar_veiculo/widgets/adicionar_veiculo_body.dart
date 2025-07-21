@@ -7,8 +7,8 @@ class AdicionarVeiculoBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(28.0),
+    return const Padding(
+      padding: EdgeInsets.all(28.0),
       child: AdicionarVeiculoForm(),
     );
   }

@@ -4,9 +4,7 @@ class ValidarPlaca {
       return false;
     }
 
-    // Verifica se a placa tem o formato correto
-    final regex = RegExp(r'^([A-Z]{3}-[0-9]{4}|[A-Z]{3}[0-9][A-Z][0-9]{2})$');
-    if (!regex.hasMatch(placa)) {
+    if (placa.length != 7) {
       return false;
     }
 

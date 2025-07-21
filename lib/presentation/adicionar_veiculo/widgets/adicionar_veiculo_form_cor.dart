@@ -14,11 +14,7 @@ class AdicionarVeiculoFormCor extends StatelessWidget {
       validator: (value) => _onAdicionarValidarCor(value),
       style: const TextStyle(color: ColorsConstants.intotheGreen),
       decoration: const InputDecoration(
-        prefixIcon: Icon(
-          Icons.color_lens,
-          color: ColorsConstants.intotheGreen,
-          size: 35,
-        ),
+        prefixIcon: Icon(Icons.color_lens),
         hintText: 'Cor',
         hintStyle: TextStyle(color: ColorsConstants.intotheGreen),
         enabledBorder: UnderlineInputBorder(

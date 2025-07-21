@@ -1,3 +1,4 @@
+import 'package:pratica/core/enum/marcas.dart';
 import 'package:pratica/core/resources/base_model.dart';
 
 class VeiculoModel extends BaseModel {
@@ -7,6 +8,7 @@ class VeiculoModel extends BaseModel {
   final String? quilometragem;
   final int? ano;
   final String? cor;
+  final Marcas? marca;
 
   VeiculoModel({
     this.id,
@@ -15,6 +17,7 @@ class VeiculoModel extends BaseModel {
     this.quilometragem,
     this.ano,
     this.cor,
+    this.marca,
   });
 
   factory VeiculoModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +28,10 @@ class VeiculoModel extends BaseModel {
       quilometragem: json['quilometragem'] as String?,
       ano: json['ano'] as int?,
       cor: json['cor'] as String?,
+      marca:
+          json['marca'] != null
+              ? Marcas.values.firstWhere((e) => e.name == json['marca'])
+              : null,
     );
   }
 
@@ -37,6 +44,7 @@ class VeiculoModel extends BaseModel {
       'quilometragem': quilometragem,
       'ano': ano,
       'cor': cor,
+      'marca': marca?.name,
     };
   }
 
@@ -49,6 +57,7 @@ class VeiculoModel extends BaseModel {
         "quilometragem: $quilometragem, "
         "ano: $ano, "
         "cor: $cor,"
+        "marca: ${marca?.name}"
         ")";
   }
 }

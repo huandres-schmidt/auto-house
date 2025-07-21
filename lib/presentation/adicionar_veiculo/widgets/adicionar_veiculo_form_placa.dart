@@ -11,13 +11,17 @@ class AdicionarVeiculoFormPlaca extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AdicionarVeiculoText(
-      keyboardType: TextInputType.text,
-      inputFormatters: [UpperCaseTextFormatter()],
-      controller: controller,
-      validator: (value) => _onAdicionarValidarPlaca(value),
-      prefixIcon: const Icon(Icons.numbers),
-      hintText: "Placa",
+    return Column(
+      children: [
+        AdicionarVeiculoText(
+          keyboardType: TextInputType.text,
+          inputFormatters: [UpperCaseTextFormatter()],
+          controller: controller,
+          validator: (value) => _onAdicionarValidarPlaca(value),
+          prefixIcon: const Icon(Icons.numbers),
+          hintText: "Placa",
+        ),
+      ],
     );
   }
 
