@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pratica/core/constants/colors_contants.dart';
 import 'package:pratica/core/enum/marcas.dart';
 import 'package:pratica/data/models/veiculo_model.dart';
 import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
 import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_form_ano.dart';
-import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_form_cor.dart';
 import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_form_modelo.dart';
 import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_form_placa.dart';
 import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_form_quilometragem.dart';
 
+import '../../../core/enum/cores.dart';
 import 'adicionar_veiculo_button.dart';
 
 class AdicionarVeiculoForm extends StatefulWidget {
@@ -29,9 +30,8 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
 
   final TextEditingController _ano = TextEditingController();
 
-  final TextEditingController _cor = TextEditingController();
-
   Marcas? _marca;
+  Cores? _cor;
 
   @override
   Widget build(BuildContext context) {
@@ -44,36 +44,6 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Selecione a marca do veículo:'),
-                  const SizedBox(height: 10),
-                  DropdownButton<Marcas>(
-                    value: _marca,
-                    hint: const Text("Escolha uma marca"),
-                    isExpanded: true,
-                    items:
-                        Marcas.values.map((marca) {
-                          return DropdownMenuItem<Marcas>(
-                            value: marca,
-                            child: Text(marca.nome),
-                          );
-                        }).toList(),
-                    onChanged: (novaMarca) {
-                      setState(() {
-                        _marca = novaMarca;
-                      });
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  if (_marca != null)
-                    Text(
-                      'Marca selecionada: ${_marca?.nome}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                ],
-              ),
               AdicionarVeiculoFormPlaca(controller: _placa),
               const SizedBox(height: 10),
               AdicionarVeiculoFormModelo(controller: _modelo),
@@ -83,8 +53,67 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
               const SizedBox(height: 10),
               AdicionarVeiculoFormAno(controller: _ano),
               const SizedBox(height: 10),
-              AdicionarVeiculoFormCor(controller: _cor),
+              DropdownButton<Marcas>(
+                style: const TextStyle(
+                  color: ColorsConstants.intotheGreen,
+                  fontWeight: FontWeight.w500,
+                ),
+                icon: const Icon(Icons.arrow_downward_sharp),
+                dropdownColor: ColorsConstants.whiteEdgar,
+                iconEnabledColor: ColorsConstants.intotheGreen,
+                iconDisabledColor: ColorsConstants.intotheGreen,
+                menuWidth: 250,
+                underline: Container(
+                  height: 1.5,
+                  color: ColorsConstants.intotheGreen,
+                ),
+                value: _marca,
+                hint: const Text("Escolha uma marca"),
+                isExpanded: true,
+                items:
+                    Marcas.values.map((marca) {
+                      return DropdownMenuItem<Marcas>(
+                        value: marca,
+                        child: Text(marca.nome),
+                      );
+                    }).toList(),
+                onChanged: (novaMarca) {
+                  setState(() {
+                    _marca = novaMarca;
+                  });
+                },
+              ),
               const SizedBox(height: 10),
+              DropdownButton<Cores>(
+                style: const TextStyle(
+                  color: ColorsConstants.intotheGreen,
+                  fontWeight: FontWeight.w500,
+                ),
+                icon: const Icon(Icons.arrow_downward_sharp),
+                dropdownColor: ColorsConstants.whiteEdgar,
+                iconEnabledColor: ColorsConstants.intotheGreen,
+                iconDisabledColor: ColorsConstants.intotheGreen,
+                menuWidth: 250,
+                underline: Container(
+                  height: 1.5,
+                  color: ColorsConstants.intotheGreen,
+                ),
+                value: _cor,
+                hint: const Text("Escolha uma cor"),
+                isExpanded: true,
+                items:
+                    Cores.values.map((cores) {
+                      return DropdownMenuItem<Cores>(
+                        value: cores,
+                        child: Text(cores.nome),
+                      );
+                    }).toList(),
+                onChanged: (novaCor) {
+                  setState(() {
+                    _cor = novaCor;
+                  });
+                },
+              ),
               const Spacer(),
               AdicionarVeiculoButton(
                 onPressed: () => _onAdicionarVeiculoSubmit(context),
@@ -102,16 +131,13 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
       final placa = _placa.text;
       final quilometragem = _quilometragem.text;
       final ano = _ano.text;
-      final cor = _cor.text;
-
-      print('marca: $_marca');
 
       VeiculoModel veiculo = VeiculoModel(
         modelo: modelo,
         placa: placa,
         quilometragem: quilometragem,
         ano: int.parse(ano),
-        cor: cor,
+        cor: _cor,
         marca: _marca,
       );
 
