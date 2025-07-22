@@ -48,7 +48,7 @@ class VeiculoModel extends BaseModel {
       'modelo': modelo,
       'quilometragem': quilometragem,
       'ano': ano,
-      'cor': cor,
+      'cor': cor?.name,
       'marca': marca?.name,
     };
   }
@@ -61,7 +61,7 @@ class VeiculoModel extends BaseModel {
         " modelo: $modelo, "
         "quilometragem: $quilometragem, "
         "ano: $ano, "
-        "cor: $cor,"
+        "cor: ${cor?.name},"
         "marca: ${marca?.name}"
         ")";
   }

@@ -39,6 +39,17 @@ flutter:
     - assets/images/icon/placa.png
     - assets/images/icon/modelo.png
     - assets/images/icon/quilometragem.png
+    #Marcas
+    - assets/images/marca/chevrolet.svg
+    - assets/images/marca/fiat.svg
+    - assets/images/marca/ford.svg
+    - assets/images/marca/honda.svg
+    - assets/images/marca/hyundai.svg
+    - assets/images/marca/jeep.svg
+    - assets/images/marca/peugeot.svg
+    - assets/images/marca/renault.svg
+    - assets/images/marca/toyota.svg
+    - assets/images/marca/volkswagen.svg
 
   # fonts:
   #   - family: Schyler

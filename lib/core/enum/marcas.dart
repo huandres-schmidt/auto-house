@@ -1,14 +1,14 @@
 enum Marcas {
-  chevrolet('Chevrolet', 'assets/logos/chevrolet.svg'),
-  volkswagen('Volkswagen', 'assets/logos/volkswagen.svg'),
-  fiat('Fiat', 'assets/logos/fiat.svg'),
-  toyota('Toyota', 'assets/logos/toyota.svg'),
-  hyundai('Hyundai', 'assets/logos/hyundai.svg'),
-  renault('Renault', 'assets/logos/renault.svg'),
-  honda('Honda', 'assets/logos/honda.svg'),
-  ford('Ford', 'assets/logos/ford.svg'),
-  jeep('Jeep', 'assets/logos/jeep.svg'),
-  peugeot('Peugeot', 'assets/logos/peugeot.svg');
+  chevrolet('Chevrolet', 'assets/images/marca/chevrolet.svg'),
+  volkswagen('Volkswagen', 'assets/images/marca/volkswagen.svg'),
+  fiat('Fiat', 'assets/images/marca/fiat.svg'),
+  toyota('Toyota', 'assets/images/marca/toyota.svg'),
+  hyundai('Hyundai', 'assets/images/marca/hyundai.svg'),
+  renault('Renault', 'assets/images/marca/renault.svg'),
+  honda('Honda', 'assets/images/marca/honda.svg'),
+  ford('Ford', 'assets/images/marca/ford.svg'),
+  jeep('Jeep', 'assets/images/marca/jeep.svg'),
+  peugeot('Peugeot', 'assets/images/marca/peugeot.svg');
 
   const Marcas(this.nome, this.asset);
   final String nome;
