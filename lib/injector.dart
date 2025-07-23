@@ -7,8 +7,10 @@ import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bl
 import 'package:pratica/presentation/home/bloc/home_bloc.dart';
 
 import 'data/datasource/local/app_database.dart';
+import 'data/datasource/local/shared_data.dart';
 import 'domain/repositories/local/veiculo_local_repository.dart';
 import 'external/datasource/local/app_database_impl.dart';
+import 'external/datasource/local/shared_data_impl.dart';
 
 final getIt = GetIt.instance;
 
@@ -32,7 +34,7 @@ final class InjectorImpl extends Injector {
     /// Database----------------------------------------------------------------
     getIt.registerSingletonAsync<AppDatabase>(AppDatabaseImpl.initialize);
 
-    // getIt.registerSingletonAsync<SharedData>(SharedDataImpl.initialize);
+    getIt.registerSingletonAsync<SharedData>(SharedDataImpl.initialize);
 
     /// Preferences Repository--------------------------------------------------
 
