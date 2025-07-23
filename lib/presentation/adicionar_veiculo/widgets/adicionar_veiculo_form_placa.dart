@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pratica/core/constants/assets_contants.dart';
 import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_text.dart';
 
 import '../../../core/utils/upper_case_text_formatter.dart';
@@ -18,7 +19,7 @@ class AdicionarVeiculoFormPlaca extends StatelessWidget {
           inputFormatters: [UpperCaseTextFormatter()],
           controller: controller,
           validator: (value) => _onAdicionarValidarPlaca(value),
-          prefixIcon: const Icon(Icons.numbers),
+          assetsConstants: AssetsConstants.iconPlaca,
           hintText: "Placa",
         ),
       ],

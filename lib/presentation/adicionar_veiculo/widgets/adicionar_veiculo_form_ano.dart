@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:pratica/core/constants/assets_contants.dart';
 import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_text.dart';
 
 
@@ -15,7 +16,7 @@ class AdicionarVeiculoFormAno extends StatelessWidget {
       inputFormatters: [MaskTextInputFormatter(mask: '####')],
       controller: controller,
       validator: (value) => _onAdicionarValidarAno(value),
-      prefixIcon: const Icon(Icons.date_range),
+      assetsConstants: AssetsConstants.iconAno,
       hintText: "Ano de Fabricação",
     );
   }

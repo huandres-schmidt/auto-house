@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 enum Cores {
-  vermelho('vermelho', Colors.red),
-  verde('verde', Colors.green),
-  azul('azul', Colors.blue),
-  amarelo('amarelo', Colors.yellow),
-  laranja('aaranja', Colors.orange),
-  prata('cinza', Colors.grey),
-  preto('preto', Colors.black),
-  branco('branco', Colors.white);
+  vermelho('Vermelho', Colors.red),
+  verde('Verde', Colors.green),
+  azul('Azul', Colors.blue),
+  amarelo('Amarelo', Colors.yellow),
+  laranja('Laranja', Colors.orange),
+  prata('Cinza', Colors.grey),
+  preto('Preto', Colors.black),
+  branco('Branco', Colors.white);
 
   const Cores(this.nome, this.cor);
   final String nome;

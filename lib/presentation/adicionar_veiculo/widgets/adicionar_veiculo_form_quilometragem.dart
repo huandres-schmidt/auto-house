@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:pratica/core/constants/assets_contants.dart';
 import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_text.dart';
 
 
@@ -15,10 +16,10 @@ class AdicionarVeiculoFormQuilometragem extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdicionarVeiculoText(
       keyboardType: TextInputType.number,
-      inputFormatters: [MaskTextInputFormatter(mask: '###.###.###')],
+      inputFormatters: [MaskTextInputFormatter(mask: '###.###')],
       controller: controller,
       validator: (value) => _onAdicionarValidarQuilometragem(value),
-      prefixIcon: const Icon(Icons.numbers),
+      assetsConstants: AssetsConstants.iconMotor,
       hintText: "Quilometragem",
     );
   }

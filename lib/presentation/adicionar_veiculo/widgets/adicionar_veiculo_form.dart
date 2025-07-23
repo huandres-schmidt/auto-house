@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pratica/core/constants/colors_contants.dart';
 import 'package:pratica/core/enum/marcas.dart';
 import 'package:pratica/data/models/veiculo_model.dart';
@@ -74,7 +75,18 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
                     Marcas.values.map((marca) {
                       return DropdownMenuItem<Marcas>(
                         value: marca,
-                        child: Text(marca.nome),
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              marca.asset,
+                              height: 35,
+                              width: 35,
+                              color: ColorsConstants.intotheGreen,
+                            ),
+                            const SizedBox(width: 10),
+                            Text(marca.nome),
+                          ],
+                        ),
                       );
                     }).toList(),
                 onChanged: (novaMarca) {
@@ -105,7 +117,13 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
                     Cores.values.map((cores) {
                       return DropdownMenuItem<Cores>(
                         value: cores,
-                        child: Text(cores.nome),
+                        child: Row(
+                          children: [
+                            Container(color: cores.cor, height: 30, width: 30),
+                            const SizedBox(width: 10),
+                            Text(cores.nome),
+                          ],
+                        ),
                       );
                     }).toList(),
                 onChanged: (novaCor) {

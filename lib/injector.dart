@@ -1,6 +1,8 @@
 import 'package:get_it/get_it.dart';
+import 'package:pratica/core/shared/app_system_info.dart';
 import 'package:pratica/data/repositories/veiculo_local_repository_impl.dart';
 import 'package:pratica/domain/controller/veiculo_controller.dart';
+import 'package:pratica/external/plugins/app_package_impl.dart';
 import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
 import 'package:pratica/presentation/home/bloc/home_bloc.dart';
 
@@ -25,11 +27,10 @@ final class InjectorImpl extends Injector {
     final getIt = GetIt.instance;
 
     /// Plugins
+    await AppSystemInfo.initialize(AppPackageImpl());
 
     /// Database----------------------------------------------------------------
-    getIt.registerSingletonAsync<AppDatabase>(
-      AppDatabaseImpl.initialize,
-    );
+    getIt.registerSingletonAsync<AppDatabase>(AppDatabaseImpl.initialize);
 
     // getIt.registerSingletonAsync<SharedData>(SharedDataImpl.initialize);
 
@@ -44,22 +45,14 @@ final class InjectorImpl extends Injector {
 
     /// Controller--------------------------------------------------------------
     getIt.registerSingleton<VeiculoController>(
-      VeiculoController(
-        getIt.get<VeiculoLocalRepository>(),
-      ),
+      VeiculoController(getIt.get<VeiculoLocalRepository>()),
     );
 
     /// BLoC--------------------------------------------------------------------
-    getIt.registerSingleton<HomeBloc>(
-      HomeBloc(
-        getIt.get<VeiculoController>()
-      ),
-    );
+    getIt.registerSingleton<HomeBloc>(HomeBloc(getIt.get<VeiculoController>()));
 
     getIt.registerSingleton<AdicionarVeiculoBloc>(
-      AdicionarVeiculoBloc(
-        getIt.get<VeiculoController>(),
-      ),
+      AdicionarVeiculoBloc(getIt.get<VeiculoController>()),
     );
 
     return InjectorImpl._(getIt);
