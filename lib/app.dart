@@ -23,7 +23,7 @@ class AutoHouseApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         onGenerateRoute: (settings) => Routes.router(settings, injector),
-        initialRoute: AppRoutes.home.route,
+        initialRoute: AppRoutes.root.route,
       ),
     );
   }
