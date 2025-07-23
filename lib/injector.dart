@@ -1,13 +1,17 @@
 import 'package:get_it/get_it.dart';
 import 'package:pratica/core/shared/app_system_info.dart';
 import 'package:pratica/data/repositories/veiculo_local_repository_impl.dart';
+import 'package:pratica/domain/controller/preference_controller.dart';
 import 'package:pratica/domain/controller/veiculo_controller.dart';
+import 'package:pratica/domain/repositories/preferences/preferences_local_repository.dart';
 import 'package:pratica/external/plugins/app_package_impl.dart';
 import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
+import 'package:pratica/presentation/auth/bloc/auth_bloc.dart';
 import 'package:pratica/presentation/home/bloc/home_bloc.dart';
 
 import 'data/datasource/local/app_database.dart';
 import 'data/datasource/local/shared_data.dart';
+import 'data/repositories/preferences/preferences_local_repository_impl.dart';
 import 'domain/repositories/local/veiculo_local_repository.dart';
 import 'external/datasource/local/app_database_impl.dart';
 import 'external/datasource/local/shared_data_impl.dart';
@@ -37,6 +41,9 @@ final class InjectorImpl extends Injector {
     getIt.registerSingletonAsync<SharedData>(SharedDataImpl.initialize);
 
     /// Preferences Repository--------------------------------------------------
+    getIt.registerSingleton<PreferencesLocalRepository>(
+      PreferencesLocalRepositoryImpl(await getIt.getAsync<SharedData>()),
+    );
 
     /// Local Repository--------------------------------------------------------
     getIt.registerSingleton<VeiculoLocalRepository>(
@@ -50,11 +57,21 @@ final class InjectorImpl extends Injector {
       VeiculoController(getIt.get<VeiculoLocalRepository>()),
     );
 
+    getIt.registerSingleton<PreferenceController>(
+      PreferenceController(getIt.get<PreferencesLocalRepository>()),
+    );
+
     /// BLoC--------------------------------------------------------------------
     getIt.registerSingleton<HomeBloc>(HomeBloc(getIt.get<VeiculoController>()));
 
     getIt.registerSingleton<AdicionarVeiculoBloc>(
       AdicionarVeiculoBloc(getIt.get<VeiculoController>()),
+    );
+
+    getIt.registerSingleton<AuthBloc>(
+      AuthBloc(
+        getIt.get<PreferenceController>(),
+      ),
     );
 
     return InjectorImpl._(getIt);

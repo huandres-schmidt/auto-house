@@ -18,7 +18,7 @@ class HomeContent extends StatelessWidget {
         backgroundColor: ColorsConstants.whiteSolid,
         title: Image.asset(
           AssetsConstants.logoHorizontal,
-          height: 150,
+          height: 48,
           color: ColorsConstants.intotheGreen,
         ),
         actions: [
