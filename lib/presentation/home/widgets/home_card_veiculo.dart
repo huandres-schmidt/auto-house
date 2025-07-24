@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../config/routes.dart';
 import '../bloc/home_bloc.dart';
 
 class HomeCardVeiculo extends StatelessWidget {
@@ -18,6 +19,11 @@ class HomeCardVeiculo extends StatelessWidget {
         return state.veiculos.isEmpty
             ? const Center(child: Text('Nenhum veículo cadastrado'))
             : ListTile(
+              onTap: () {
+                Navigator.of(
+                  context,
+                ).pushNamed(AppRoutes.historicoVeiculo.route, arguments: veiculo);
+              },
               leading: SvgPicture.asset(
                 veiculo?.marca?.asset ?? '',
                 height: 40,

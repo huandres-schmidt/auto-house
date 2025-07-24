@@ -4,7 +4,9 @@ import 'package:pratica/presentation/adicionar_veiculo/adicionar_veiculo_screen.
 import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
 import 'package:pratica/presentation/inicio/inicio_screen.dart';
 
+import '../data/models/veiculo_model.dart';
 import '../presentation/components/animation/modal_page_route.dart';
+import '../presentation/historico_veiculo/historico_veiculo_screen.dart';
 import '../presentation/home/bloc/home_bloc.dart';
 import '../presentation/home/home_screen.dart';
 
@@ -13,7 +15,8 @@ enum NavigationFlow { simple, modalBottomUp }
 enum AppRoutes {
   root('/', NavigationFlow.simple),
   home('/home', NavigationFlow.simple),
-  adicionarVeiculo('/adicionar-veiculo', NavigationFlow.simple);
+  adicionarVeiculo('/adicionar-veiculo', NavigationFlow.simple),
+  historicoVeiculo('/historico-veiculo', NavigationFlow.simple);
 
   final String route;
   final NavigationFlow flow;
@@ -40,6 +43,9 @@ class Routes {
         adicionarVeiculoBloc: injector.getIt.get<AdicionarVeiculoBloc>(),
       ),
       AppRoutes.root => InicioScreen(),
+      AppRoutes.historicoVeiculo => HistoricoVeiculoScreen(
+        veiculo: settings.arguments as VeiculoModel,
+      ),
     };
 
     return switch (appRoute.flow) {
