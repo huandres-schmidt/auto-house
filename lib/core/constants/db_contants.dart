@@ -8,4 +8,5 @@ class DbConstants {
 
 class TableName {
   static const String veiculo = 'VEICULO';
+  static const String manutencao = 'MANUTENCAO';
 }

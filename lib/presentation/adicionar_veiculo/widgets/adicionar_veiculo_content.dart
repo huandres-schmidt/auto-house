@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
+import 'package:pratica/presentation/components/dialog/dialog.dart';
 
 import '../../../core/constants/assets_contants.dart';
 import '../../../core/constants/colors_contants.dart';
@@ -18,7 +19,7 @@ class AdicionarVeiculoContent extends StatelessWidget {
         centerTitle: true,
         title: Image.asset(
           AssetsConstants.logoHorizontal,
-          height: 150,
+          height: 50,
           color: ColorsConstants.intotheGreen,
         ),
         iconTheme: const IconThemeData(color: ColorsConstants.intotheGreen),
@@ -34,44 +35,10 @@ class AdicionarVeiculoContent extends StatelessWidget {
 
   void _listener(BuildContext context, AdicionarVeiculoState state) {
     if (state is AdicionarVeiculoSuccess) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            icon: const Icon(
-              Icons.check_circle,
-              color: ColorsConstants.intotheGreen,
-              size: 60,
-            ),
-            title: const Text('Veículo Adicionado'),
-            backgroundColor: ColorsConstants.whiteSolid,
-            content: const Text('O veículo foi adicionado com sucesso!'),
-            actions: [
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorsConstants.intotheGreen,
-                    textStyle: const TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.white,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                  child: const Text(
-                    'OK',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-            ],
-          );
-        },
+      DialogCustom.dialogSucess(
+        context,
+        'Novo Veículo Adicionado',
+        'O veículo foi adicionado com sucesso!',
       );
     }
     if (state is AdicionarVeiculoFail) {
@@ -79,11 +46,7 @@ class AdicionarVeiculoContent extends StatelessWidget {
         context: context,
         builder: (context) {
           return AlertDialog(
-            icon: const Icon(
-              Icons.cancel,
-              color: Colors.red,
-              size: 60,
-            ),
+            icon: const Icon(Icons.cancel, color: Colors.red, size: 60),
             title: const Text('Erro ao Adicionar Veículo'),
             backgroundColor: ColorsConstants.whiteSolid,
             content: Text(state.message),

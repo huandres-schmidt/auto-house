@@ -1,10 +1,14 @@
 import 'package:get_it/get_it.dart';
 import 'package:pratica/core/shared/app_system_info.dart';
+import 'package:pratica/data/repositories/manutencao_local_repository_impl.dart';
 import 'package:pratica/data/repositories/veiculo_local_repository_impl.dart';
+import 'package:pratica/domain/controller/manutencao_controller.dart';
 import 'package:pratica/domain/controller/preference_controller.dart';
 import 'package:pratica/domain/controller/veiculo_controller.dart';
+import 'package:pratica/domain/repositories/local/manutencao_local_repository.dart';
 import 'package:pratica/domain/repositories/preferences/preferences_local_repository.dart';
 import 'package:pratica/external/plugins/app_package_impl.dart';
+import 'package:pratica/presentation/adicionar_manutencao/bloc/adicionar_manutencao_bloc.dart';
 import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
 import 'package:pratica/presentation/auth/bloc/auth_bloc.dart';
 import 'package:pratica/presentation/home/bloc/home_bloc.dart';
@@ -50,6 +54,10 @@ final class InjectorImpl extends Injector {
       VeiculoLocalRepositoryImpl(await getIt.getAsync<AppDatabase>()),
     );
 
+    getIt.registerSingleton<ManutencaoLocalRepository>(
+      ManutencaoLocalRepositoryImpl(await getIt.getAsync<AppDatabase>()),
+    );
+
     /// Remote Repository-------------------------------------------------------
 
     /// Controller--------------------------------------------------------------
@@ -61,6 +69,10 @@ final class InjectorImpl extends Injector {
       PreferenceController(getIt.get<PreferencesLocalRepository>()),
     );
 
+    getIt.registerSingleton<ManutencaoController>(
+      ManutencaoController(getIt.get<ManutencaoLocalRepository>()),
+    );
+
     /// BLoC--------------------------------------------------------------------
     getIt.registerSingleton<HomeBloc>(HomeBloc(getIt.get<VeiculoController>()));
 
@@ -69,9 +81,11 @@ final class InjectorImpl extends Injector {
     );
 
     getIt.registerSingleton<AuthBloc>(
-      AuthBloc(
-        getIt.get<PreferenceController>(),
-      ),
+      AuthBloc(getIt.get<PreferenceController>()),
+    );
+
+    getIt.registerSingleton<AdicionarManutencaoBloc>(
+      AdicionarManutencaoBloc(getIt.get<ManutencaoController>()),
     );
 
     return InjectorImpl._(getIt);

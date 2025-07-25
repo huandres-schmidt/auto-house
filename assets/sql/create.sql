@@ -7,3 +7,15 @@ CREATE TABLE VEICULO (
     cor                 TEXT,
     marca               TEXT
 );
+
+CREATE TABLE MANUTENCAO (
+    id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+    veiculo_id          INTEGER,
+    tipo                TEXT,
+    nomePeca            TEXT,
+    marca               TEXT,
+    quilometragem       TEXT,
+    data                TEXT,
+    valor               REAL,
+    descricao           TEXT
+)
