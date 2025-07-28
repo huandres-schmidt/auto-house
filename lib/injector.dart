@@ -11,6 +11,7 @@ import 'package:pratica/external/plugins/app_package_impl.dart';
 import 'package:pratica/presentation/adicionar_manutencao/bloc/adicionar_manutencao_bloc.dart';
 import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
 import 'package:pratica/presentation/auth/bloc/auth_bloc.dart';
+import 'package:pratica/presentation/historico/bloc/historico_bloc.dart';
 import 'package:pratica/presentation/home/bloc/home_bloc.dart';
 
 import 'data/datasource/local/app_database.dart';
@@ -86,6 +87,10 @@ final class InjectorImpl extends Injector {
 
     getIt.registerSingleton<AdicionarManutencaoBloc>(
       AdicionarManutencaoBloc(getIt.get<ManutencaoController>()),
+    );
+
+    getIt.registerSingleton<HistoricoBloc>(
+      HistoricoBloc(getIt.get<ManutencaoController>()),
     );
 
     return InjectorImpl._(getIt);

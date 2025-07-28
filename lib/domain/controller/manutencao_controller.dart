@@ -13,4 +13,13 @@ class ManutencaoController {
   Future<List<ManutencaoModel?>> listarManutencoes() async {
     return await _manutencaoLocalRepository.getAllManutencoes();
   }
+
+  Future<List<ManutencaoModel?>> getListManuntencaoById(int id) async {
+    return await _manutencaoLocalRepository.getAllManutencoes().then(
+      (manutencoes) =>
+          manutencoes
+              .where((manutencao) => manutencao?.veiculoId == id)
+              .toList(),
+    );
+  }
 }
