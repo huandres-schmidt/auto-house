@@ -49,6 +49,7 @@ class Routes {
       ),
       AppRoutes.adicionarManutencao => AdicionarManutencaoScreen(
         adicionarManutencaoBloc: injector.getIt.get<AdicionarManutencaoBloc>(),
+        veiculo: settings.arguments as VeiculoModel,
       ),
     };
 

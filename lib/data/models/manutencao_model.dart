@@ -26,14 +26,14 @@ class ManutencaoModel extends BaseModel {
   factory ManutencaoModel.fromJson(Map<String, dynamic> json) {
     return ManutencaoModel(
       id: json['id'] as int?,
-      veiculoId: json['veiculoId'] as int?,
+      veiculoId: json['veiculo_id'] as int?,
       tipo: json['tipo'] as String?,
-      nomePeca: json['nomePeca'] as String?,
+      nomePeca: json['peca'] as String?,
       marca: json['marca'] as String?,
       quilometragem: json['quilometragem'] as String?,
       data: json['data'] as String?,
       valor: (json['valor'] as num?)?.toDouble(),
-      observacao: json['observacao'] as String?,
+      observacao: json['descricao'] as String?,
     );
   }
 
@@ -41,14 +41,14 @@ class ManutencaoModel extends BaseModel {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'veiculoId': veiculoId,
+      'veiculo_id': veiculoId,
       'tipo': tipo,
-      'nomePeca': nomePeca,
+      'peca': nomePeca,
       'marca': marca,
       'quilometragem': quilometragem,
       'data': data,
       'valor': valor,
-      'observacao': observacao,
+      'descricao': observacao,
     };
   }
 
@@ -58,12 +58,12 @@ class ManutencaoModel extends BaseModel {
         'id: $id, '
         'veiculoId: $veiculoId,'
         ' tipo: $tipo,'
-        ' nomePeca: $nomePeca, '
+        ' peca: $nomePeca, '
         'marca: $marca,'
         ' quilometragem: $quilometragem, '
         'data: $data, '
         'valor: $valor,'
-        ' observacao: $observacao,'
+        ' descricao: $observacao,'
         '}';
   }
 }

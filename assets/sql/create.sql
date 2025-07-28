@@ -12,7 +12,7 @@ CREATE TABLE MANUTENCAO (
     id                  INTEGER PRIMARY KEY AUTOINCREMENT,
     veiculo_id          INTEGER,
     tipo                TEXT,
-    nomePeca            TEXT,
+    peca                TEXT,
     marca               TEXT,
     quilometragem       TEXT,
     data                TEXT,

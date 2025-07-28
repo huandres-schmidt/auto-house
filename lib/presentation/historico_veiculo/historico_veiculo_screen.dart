@@ -25,9 +25,10 @@ class HistoricoVeiculoScreen extends StatelessWidget {
           ElevatedButtonIcon(
             label: 'Adicionar Manutenção',
             onPressed: () {
-              Navigator.of(
-                context,
-              ).pushNamed(AppRoutes.adicionarManutencao.route);
+              Navigator.of(context).pushNamed(
+                AppRoutes.adicionarManutencao.route,
+                arguments: veiculo,
+              );
             },
           ),
         ],
