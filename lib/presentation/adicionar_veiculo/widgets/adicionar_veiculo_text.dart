@@ -11,7 +11,8 @@ class AdicionarVeiculoText extends StatelessWidget {
     required this.controller,
     required this.validator,
     required this.hintText,
-    required this.assetsConstants,
+    this.assetsConstants,
+    this.icon,
   });
 
   final List<TextInputFormatter> inputFormatters;
@@ -19,7 +20,20 @@ class AdicionarVeiculoText extends StatelessWidget {
   final TextEditingController controller;
   final Function(String? value) validator;
   final String hintText;
-  final String assetsConstants;
+  final String? assetsConstants;
+  final IconData? icon;
+
+  Widget get iconWidget {
+    if (icon != null) {
+      return Icon(icon, size: 35, color: ColorsConstants.intotheGreen);
+    }
+    return Image.asset(
+      assetsConstants!,
+      width: 35,
+      height: 35,
+      color: ColorsConstants.intotheGreen,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +44,7 @@ class AdicionarVeiculoText extends StatelessWidget {
       validator: (value) => validator(value),
       style: const TextStyle(color: ColorsConstants.intotheGreen),
       decoration: InputDecoration(
-        icon: Image.asset(assetsConstants, width: 35, height: 35),
+        icon: iconWidget,
         hintText: hintText,
         hintStyle: const TextStyle(color: ColorsConstants.intotheGreen),
         enabledBorder: const UnderlineInputBorder(

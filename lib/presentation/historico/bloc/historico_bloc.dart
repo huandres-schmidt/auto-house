@@ -23,8 +23,7 @@ class HistoricoBloc extends Bloc<HistoricoEvent, HistoricoState> {
     try {
       emit(HistoricoLoading());
       final list = await _manutencaoController.getListManuntencaoById(event.id);
-
-      emit(HistoricoLoaded(list));
+      emit(HistoricoLoaded(manutencoes: list.reversed.toList()));
     } catch (e) {
       emit(HistoricoFail(e.toString()));
     }

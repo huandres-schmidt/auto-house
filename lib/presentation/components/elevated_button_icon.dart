@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/constants/colors_contants.dart';
+import '../../core/constants/font_contants.dart';
 
 class ElevatedButtonIcon extends StatelessWidget {
   const ElevatedButtonIcon({
@@ -15,7 +16,10 @@ class ElevatedButtonIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      label: Text(label, style: const TextStyle(color: Colors.white)),
+      label: Text(
+        label,
+        style: TextStyle(color: Colors.white, fontFamily: FontConstants.inter),
+      ),
       icon: const Icon(Icons.add, color: Colors.white),
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(

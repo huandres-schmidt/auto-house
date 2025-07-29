@@ -1,8 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:pratica/data/models/manutencao_model.dart';
 
 import '../../../core/constants/assets_contants.dart';
+import '../../../core/constants/colors_contants.dart';
+import '../../../core/enum/tipo.dart';
 import '../../../data/models/veiculo_model.dart';
 import '../../adicionar_veiculo/widgets/adicionar_veiculo_text.dart';
 import '../bloc/adicionar_manutencao_bloc.dart';
@@ -21,14 +24,13 @@ class AdicionarManutencaoForm extends StatefulWidget {
 class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  final TextEditingController _tipo = TextEditingController();
   final TextEditingController _peca = TextEditingController();
   final TextEditingController _marca = TextEditingController();
   final TextEditingController _quilometragem = TextEditingController();
   final TextEditingController _data = TextEditingController();
   final TextEditingController _valor = TextEditingController();
   final TextEditingController _observacao = TextEditingController();
-
+  Tipo? _tipo;
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +43,46 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              AdicionarVeiculoText(
-                inputFormatters: const [],
-                keyboardType: TextInputType.text,
-                controller: _tipo,
-                validator: (value) => _onAdicionarValidarTipo(value),
-                hintText: 'Tipo de Manutenção',
-                assetsConstants: AssetsConstants.iconMotor,
+              DropdownButton<Tipo>(
+                style: const TextStyle(
+                  color: ColorsConstants.intotheGreen,
+                  fontWeight: FontWeight.w500,
+                ),
+                icon: const Icon(Icons.arrow_downward_sharp),
+                dropdownColor: ColorsConstants.whiteEdgar,
+                iconEnabledColor: ColorsConstants.intotheGreen,
+                iconDisabledColor: ColorsConstants.intotheGreen,
+                menuWidth: 250,
+                underline: Container(
+                  height: 1.5,
+                  color: ColorsConstants.intotheGreen,
+                ),
+                value: _tipo,
+                hint: const Text("Escolha o tipo de manutenção realizada"),
+                isExpanded: true,
+                items:
+                    Tipo.values.map((tipo) {
+                      return DropdownMenuItem<Tipo>(
+                        value: tipo,
+                        child: Row(
+                          children: [
+                            // SvgPicture.asset(
+                            //   marca.asset,
+                            //   height: 35,
+                            //   width: 35,
+                            //   color: ColorsConstants.intotheGreen,
+                            // ),
+                            const SizedBox(width: 10),
+                            Text(tipo.tipo),
+                          ],
+                        ),
+                      );
+                    }).toList(),
+                onChanged: (novaTipo) {
+                  setState(() {
+                    _tipo = novaTipo;
+                  });
+                },
               ),
               const SizedBox(height: 10),
               AdicionarVeiculoText(
@@ -56,7 +91,7 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
                 controller: _peca,
                 validator: (value) => _onAdicionarValidarTipo(value),
                 hintText: 'Peça Substituída',
-                assetsConstants: AssetsConstants.iconMotor,
+                assetsConstants: AssetsConstants.iconPeca,
               ),
               const SizedBox(height: 10),
               AdicionarVeiculoText(
@@ -65,26 +100,26 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
                 controller: _marca,
                 validator: (value) => _onAdicionarValidarTipo(value),
                 hintText: 'Marca da Peça',
-                assetsConstants: AssetsConstants.iconMotor,
+                assetsConstants: AssetsConstants.iconMarca,
               ),
               const SizedBox(height: 10),
               AdicionarVeiculoText(
-                inputFormatters: const [],
-                keyboardType: TextInputType.text,
+                inputFormatters: [MaskTextInputFormatter(mask: '###.###')],
+                keyboardType: TextInputType.number,
                 controller: _quilometragem,
                 validator: (value) => _onAdicionarValidarTipo(value),
                 hintText: 'Quilometragem',
-                assetsConstants: AssetsConstants.iconMotor,
+                assetsConstants: AssetsConstants.iconQuilometragem,
               ),
               const SizedBox(height: 10),
               const SizedBox(height: 10),
               AdicionarVeiculoText(
-                inputFormatters: const [],
-                keyboardType: TextInputType.text,
+                inputFormatters: [MaskTextInputFormatter(mask: '##/##/####')],
+                keyboardType: TextInputType.number,
                 controller: _data,
                 validator: (value) => _onAdicionarValidarTipo(value),
                 hintText: 'Data',
-                assetsConstants: AssetsConstants.iconMotor,
+                assetsConstants: AssetsConstants.iconAno,
               ),
               const SizedBox(height: 10),
               AdicionarVeiculoText(
@@ -93,7 +128,7 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
                 controller: _valor,
                 validator: (value) => _onAdicionarValidarTipo(value),
                 hintText: 'Valor',
-                assetsConstants: AssetsConstants.iconMotor,
+                icon: Icons.attach_money,
               ),
               const SizedBox(height: 10),
               AdicionarVeiculoText(
@@ -102,7 +137,7 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
                 controller: _observacao,
                 validator: (value) => _onAdicionarValidarTipo(value),
                 hintText: 'Observação',
-                assetsConstants: AssetsConstants.iconMotor,
+                icon: Icons.warning_amber,
               ),
               const Spacer(),
               AdicionarManutencaoButton(
@@ -124,7 +159,7 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
 
   void _onAdicionarVeiculoSubmit(BuildContext context) {
     if (formKey.currentState?.validate() ?? false) {
-      final tipo = _tipo.text;
+      final tipo = _tipo;
       final peca = _peca.text;
       final marca = _marca.text;
       final quilometragem = _quilometragem.text;

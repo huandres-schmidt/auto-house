@@ -1,10 +1,12 @@
 part of 'historico_bloc.dart';
 
 abstract class HistoricoState extends Equatable {
-  const HistoricoState();
+  const HistoricoState({this.manutencoes = const []});
+
+  final List<ManutencaoModel?> manutencoes;
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [manutencoes];
 }
 
 final class HistoricoInitial extends HistoricoState {}
@@ -12,9 +14,7 @@ final class HistoricoInitial extends HistoricoState {}
 final class HistoricoLoading extends HistoricoState {}
 
 final class HistoricoLoaded extends HistoricoState {
-  final List<ManutencaoModel?> manutencoes;
-
-  const HistoricoLoaded(this.manutencoes);
+  const HistoricoLoaded({super.manutencoes});
 }
 
 final class HistoricoFail extends HistoricoState {

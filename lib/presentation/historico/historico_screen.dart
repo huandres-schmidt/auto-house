@@ -18,7 +18,7 @@ class HistoricoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: historicoBloc..add(HistoricoLoad(veiculo.id!)),
-      child: const HistoricoContent(),
+      child: HistoricoContent(veiculo: veiculo),
     );
   }
 }

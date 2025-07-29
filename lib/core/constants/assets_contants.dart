@@ -6,6 +6,8 @@ class AssetsConstants {
   static const String iconQuilometragem = 'assets/images/icon/quilometragem.png';
   static const String iconMotor = 'assets/images/icon/motor.png';
   static const String iconAno = 'assets/images/icon/ano.png';
+  static const String iconMarca = 'assets/images/icon/marca_peca.png';
+  static const String iconPeca = 'assets/images/icon/peca.png';
 
   //Marcas
   static const String marcaChevrolet = 'assets/images/marca/chevrolet.svg';

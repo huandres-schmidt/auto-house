@@ -1,9 +1,10 @@
+import '../../core/enum/tipo.dart';
 import '../../core/resources/base_model.dart';
 
 class ManutencaoModel extends BaseModel {
   final int? id;
   final int? veiculoId;
-  final String? tipo;
+  final Tipo? tipo;
   final String? nomePeca;
   final String? marca;
   final String? quilometragem;
@@ -27,7 +28,9 @@ class ManutencaoModel extends BaseModel {
     return ManutencaoModel(
       id: json['id'] as int?,
       veiculoId: json['veiculo_id'] as int?,
-      tipo: json['tipo'] as String?,
+      tipo: json['tipo'] != null
+          ? Tipo.values.firstWhere((e) => e.name == json['tipo'])
+          : null,
       nomePeca: json['peca'] as String?,
       marca: json['marca'] as String?,
       quilometragem: json['quilometragem'] as String?,
@@ -42,7 +45,7 @@ class ManutencaoModel extends BaseModel {
     return {
       'id': id,
       'veiculo_id': veiculoId,
-      'tipo': tipo,
+      'tipo': tipo?.name,
       'peca': nomePeca,
       'marca': marca,
       'quilometragem': quilometragem,

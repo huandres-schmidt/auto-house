@@ -43,6 +43,8 @@ flutter:
     - assets/images/icon/quilometragem.png
     - assets/images/icon/motor.png
     - assets/images/icon/ano.png
+    - assets/images/icon/peca.png
+    - assets/images/icon/marca_peca.png
     #Marcas
     - assets/images/marca/chevrolet.svg
     - assets/images/marca/fiat.svg

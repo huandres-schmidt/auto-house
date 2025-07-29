@@ -5,7 +5,7 @@ class AppTheme {
   static ThemeData theme() {
     return ThemeData(
       useMaterial3: false,
-      fontFamily: GoogleFonts.spaceGrotesk().fontFamily,
+      fontFamily: GoogleFonts.inter().fontFamily,
     );
   }
 }
