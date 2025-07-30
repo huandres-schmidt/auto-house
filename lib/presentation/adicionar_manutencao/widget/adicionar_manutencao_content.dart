@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pratica/data/models/veiculo_model.dart';
-import 'package:pratica/presentation/adicionar_manutencao/bloc/adicionar_manutencao_bloc.dart';
-
 import '../../../core/constants/colors_contants.dart';
+import '../../../data/models/veiculo_model.dart';
 import '../../components/app_bar_padrao.dart';
 import '../../components/dialog/dialog.dart';
+import '../bloc/adicionar_manutencao_bloc.dart';
 import 'adicionar_manutencao_body.dart';
 
 class AdicionarManutencaoContent extends StatelessWidget {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
 
 import '../../../core/constants/colors_contants.dart';
+import '../bloc/adicionar_veiculo_bloc.dart';
 
 class AdicionarVeiculoButton extends StatelessWidget {
   const AdicionarVeiculoButton({super.key, required this.onPressed});

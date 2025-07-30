@@ -1,6 +1,5 @@
-import 'package:pratica/core/enum/preferences.dart';
-import 'package:pratica/domain/repositories/preferences/preferences_local_repository.dart';
-
+import '../../../core/enum/preferences.dart';
+import '../../../domain/repositories/preferences/preferences_local_repository.dart';
 import '../../datasource/local/shared_data.dart';
 
 class PreferencesLocalRepositoryImpl implements PreferencesLocalRepository {

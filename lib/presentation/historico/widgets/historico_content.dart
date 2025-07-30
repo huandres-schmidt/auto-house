@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pratica/data/models/veiculo_model.dart';
-import 'package:pratica/presentation/components/app_bar_padrao.dart';
-import 'package:pratica/presentation/historico/bloc/historico_bloc.dart';
-import 'package:pratica/presentation/historico/widgets/historico_body.dart';
-
 import '../../../core/constants/colors_contants.dart';
+import '../../../data/models/veiculo_model.dart';
+import '../../components/app_bar_padrao.dart';
+import '../bloc/historico_bloc.dart';
+import 'historico_body.dart';
 
 class HistoricoContent extends StatelessWidget {
   const HistoricoContent({super.key, required this.veiculo});

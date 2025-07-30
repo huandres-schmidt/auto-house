@@ -1,8 +1,8 @@
-import 'package:pratica/core/constants/db_contants.dart';
-import 'package:pratica/core/resources/base_local_data_source.dart';
-import 'package:pratica/data/datasource/local/app_database.dart';
-import 'package:pratica/data/models/manutencao_model.dart';
-import 'package:pratica/domain/repositories/local/manutencao_local_repository.dart';
+import '../../core/constants/db_contants.dart';
+import '../../core/resources/base_local_data_source.dart';
+import '../../domain/repositories/local/manutencao_local_repository.dart';
+import '../datasource/local/app_database.dart';
+import '../models/manutencao_model.dart';
 
 class ManutencaoLocalRepositoryImpl extends BaseLocalDataSource<ManutencaoModel>
     implements ManutencaoLocalRepository {

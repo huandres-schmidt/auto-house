@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:pratica/data/models/veiculo_model.dart';
-import 'package:pratica/domain/controller/veiculo_controller.dart';
+
+import '../../../data/models/veiculo_model.dart';
+import '../../../domain/controller/veiculo_controller.dart';
 
 part 'adicionar_veiculo_event.dart';
 

@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pratica/data/models/manutencao_model.dart';
-import 'package:pratica/domain/controller/manutencao_controller.dart';
+
+import '../../../data/models/manutencao_model.dart';
+import '../../../domain/controller/manutencao_controller.dart';
 
 part 'adicionar_manutencao_event.dart';
 

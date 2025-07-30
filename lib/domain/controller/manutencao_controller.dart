@@ -1,5 +1,6 @@
-import 'package:pratica/data/models/manutencao_model.dart';
-import 'package:pratica/domain/repositories/local/manutencao_local_repository.dart';
+
+import '../../data/models/manutencao_model.dart';
+import '../repositories/local/manutencao_local_repository.dart';
 
 class ManutencaoController {
   final ManutencaoLocalRepository _manutencaoLocalRepository;

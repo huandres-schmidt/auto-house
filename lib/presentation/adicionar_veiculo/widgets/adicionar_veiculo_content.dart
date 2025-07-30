@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
-import 'package:pratica/presentation/components/dialog/dialog.dart';
 
 import '../../../core/constants/colors_contants.dart';
 import '../../components/app_bar_padrao.dart';
+import '../../components/dialog/dialog.dart';
+import '../bloc/adicionar_veiculo_bloc.dart';
 import 'adicionar_veiculo_body.dart';
 
 class AdicionarVeiculoContent extends StatelessWidget {

@@ -1,6 +1,7 @@
-import 'package:pratica/core/enum/preferences.dart';
-import 'package:pratica/data/datasource/local/shared_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../core/enum/preferences.dart';
+import '../../../data/datasource/local/shared_data.dart';
 
 class SharedDataImpl extends SharedData {
   static SharedDataImpl? _instance;

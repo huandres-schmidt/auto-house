@@ -1,6 +1,6 @@
+import 'package:autohouse/presentation/home/widgets/home_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pratica/presentation/home/widgets/home_content.dart';
 
 import 'bloc/home_bloc.dart';
 

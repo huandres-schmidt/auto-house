@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pratica/core/constants/colors_contants.dart';
+
+import '../../../core/constants/colors_contants.dart';
 
 class InicioButton extends StatelessWidget {
   const InicioButton({super.key, required this.onPressed});

@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
-import 'package:pratica/core/constants/db_contants.dart';
-import 'package:pratica/data/datasource/local/app_database.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../../../core/constants/db_contants.dart';
+import '../../../data/datasource/local/app_database.dart';
 
 class AppDatabaseImpl implements AppDatabase {
   static AppDatabaseImpl? _instance;

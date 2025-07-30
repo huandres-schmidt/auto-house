@@ -1,5 +1,5 @@
-import 'package:pratica/core/enum/marcas.dart';
-import 'package:pratica/core/resources/base_model.dart';
+import '../../core/enum/marcas.dart';
+import '../../core/resources/base_model.dart';
 
 
 class VeiculoModel extends BaseModel {

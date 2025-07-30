@@ -1,26 +1,28 @@
+import 'package:autohouse/presentation/adicionar_manutencao/bloc/adicionar_manutencao_bloc.dart';
+import 'package:autohouse/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
+import 'package:autohouse/presentation/auth/bloc/auth_bloc.dart';
+import 'package:autohouse/presentation/historico/bloc/historico_bloc.dart';
+import 'package:autohouse/presentation/home/bloc/home_bloc.dart';
+import 'package:autohouse/presentation/manutencao/bloc/manutencao_bloc.dart';
+import 'package:autohouse/presentation/menu/bloc/menu_bloc.dart';
+import 'package:autohouse/presentation/veiculo/bloc/veiculo_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:pratica/core/shared/app_system_info.dart';
-import 'package:pratica/data/repositories/manutencao_local_repository_impl.dart';
-import 'package:pratica/data/repositories/veiculo_local_repository_impl.dart';
-import 'package:pratica/domain/controller/manutencao_controller.dart';
-import 'package:pratica/domain/controller/preference_controller.dart';
-import 'package:pratica/domain/controller/veiculo_controller.dart';
-import 'package:pratica/domain/repositories/local/manutencao_local_repository.dart';
-import 'package:pratica/domain/repositories/preferences/preferences_local_repository.dart';
-import 'package:pratica/external/plugins/app_package_impl.dart';
-import 'package:pratica/presentation/adicionar_manutencao/bloc/adicionar_manutencao_bloc.dart';
-import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
-import 'package:pratica/presentation/auth/bloc/auth_bloc.dart';
-import 'package:pratica/presentation/historico/bloc/historico_bloc.dart';
-import 'package:pratica/presentation/home/bloc/home_bloc.dart';
-import 'package:pratica/presentation/menu/bloc/menu_bloc.dart';
 
+import 'core/shared/app_system_info.dart';
 import 'data/datasource/local/app_database.dart';
 import 'data/datasource/local/shared_data.dart';
+import 'data/repositories/manutencao_local_repository_impl.dart';
 import 'data/repositories/preferences/preferences_local_repository_impl.dart';
+import 'data/repositories/veiculo_local_repository_impl.dart';
+import 'domain/controller/manutencao_controller.dart';
+import 'domain/controller/preference_controller.dart';
+import 'domain/controller/veiculo_controller.dart';
+import 'domain/repositories/local/manutencao_local_repository.dart';
 import 'domain/repositories/local/veiculo_local_repository.dart';
+import 'domain/repositories/preferences/preferences_local_repository.dart';
 import 'external/datasource/local/app_database_impl.dart';
 import 'external/datasource/local/shared_data_impl.dart';
+import 'external/plugins/app_package_impl.dart';
 
 final getIt = GetIt.instance;
 
@@ -99,8 +101,14 @@ final class InjectorImpl extends Injector {
       HistoricoBloc(getIt.get<ManutencaoController>()),
     );
 
-    getIt.registerSingleton<MenuBloc>(
-      MenuBloc(),
+    getIt.registerSingleton<MenuBloc>(MenuBloc());
+
+    getIt.registerSingleton<ManutencaoBloc>(
+      ManutencaoBloc(getIt.get<ManutencaoController>()),
+    );
+
+    getIt.registerSingleton<VeiculoBloc>(
+      VeiculoBloc(getIt.get<VeiculoController>()),
     );
 
     return InjectorImpl._(getIt);

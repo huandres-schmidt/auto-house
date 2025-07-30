@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:pratica/data/models/veiculo_model.dart';
-import 'package:pratica/presentation/adicionar_manutencao/widget/adicionar_manutencao_form.dart';
+
+import '../../../data/models/veiculo_model.dart';
+import 'adicionar_manutencao_form.dart';
 
 class AdicionarManutencaoBody extends StatelessWidget {
   const AdicionarManutencaoBody({super.key, required this.veiculoModel});

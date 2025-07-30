@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:pratica/domain/controller/preference_controller.dart';
+import '../../../domain/controller/preference_controller.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 

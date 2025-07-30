@@ -15,3 +15,13 @@ final class HistoricoLoad extends HistoricoEvent {
   @override
   List<Object?> get props => [];
 }
+
+final class HistoricoDeletarVeiculo extends HistoricoEvent {
+  const HistoricoDeletarVeiculo(this.id, this.campo);
+
+  final int id;
+  final String campo;
+
+  @override
+  List<Object?> get props => [id, campo];
+}

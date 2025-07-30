@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:pratica/injector.dart';
-import 'package:pratica/presentation/adicionar_manutencao/adicionar_manutencao_screen.dart';
-import 'package:pratica/presentation/adicionar_veiculo/adicionar_veiculo_screen.dart';
-import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
-import 'package:pratica/presentation/historico/bloc/historico_bloc.dart';
-import 'package:pratica/presentation/inicio/inicio_screen.dart';
 
 import '../data/models/veiculo_model.dart';
+import '../injector.dart';
+import '../presentation/adicionar_manutencao/adicionar_manutencao_screen.dart';
 import '../presentation/adicionar_manutencao/bloc/adicionar_manutencao_bloc.dart';
+import '../presentation/adicionar_veiculo/adicionar_veiculo_screen.dart';
+import '../presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
 import '../presentation/components/animation/modal_page_route.dart';
+import '../presentation/historico/bloc/historico_bloc.dart';
 import '../presentation/historico/historico_screen.dart';
 import '../presentation/home/bloc/home_bloc.dart';
 import '../presentation/home/home_screen.dart';
+import '../presentation/inicio/inicio_screen.dart';
 
 enum NavigationFlow { simple, modalBottomUp }
 

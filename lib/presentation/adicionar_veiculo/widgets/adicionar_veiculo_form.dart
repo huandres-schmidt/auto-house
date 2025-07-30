@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:pratica/core/constants/colors_contants.dart';
-import 'package:pratica/core/enum/marcas.dart';
-import 'package:pratica/data/models/veiculo_model.dart';
-import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
 
 import '../../../core/constants/assets_contants.dart';
+import '../../../core/constants/colors_contants.dart';
+import '../../../core/enum/marcas.dart';
 import '../../../core/enum/modelo.dart';
 import '../../../core/utils/upper_case_text_formatter.dart';
 import '../../../core/utils/validar_placa.dart';
+import '../../../data/models/veiculo_model.dart';
+import '../bloc/adicionar_veiculo_bloc.dart';
 import 'adicionar_veiculo_button.dart';
 import 'adicionar_veiculo_text.dart';
 

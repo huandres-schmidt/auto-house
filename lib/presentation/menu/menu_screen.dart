@@ -1,8 +1,10 @@
+import 'package:autohouse/presentation/menu/widget/menu_content.dart';
+import 'package:autohouse/presentation/veiculo/bloc/veiculo_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pratica/presentation/menu/widget/menu_content.dart';
 
 import '../home/bloc/home_bloc.dart';
+import '../manutencao/bloc/manutencao_bloc.dart';
 import 'bloc/menu_bloc.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -22,14 +24,23 @@ class MenuScreen extends StatelessWidget {
 final class MenuParams {
   final MenuBloc menuBloc;
   final HomeBloc homeBloc;
+  final ManutencaoBloc manutencaoBloc;
+  final VeiculoBloc veiculoBloc;
 
-  MenuParams({required this.menuBloc, required this.homeBloc});
+  MenuParams({
+    required this.menuBloc,
+    required this.homeBloc,
+    required this.manutencaoBloc,
+    required this.veiculoBloc,
+  });
 
   @override
   String toString() {
     return 'MenuParams{'
         'menuBloc: $menuBloc, '
         'homeBloc: $homeBloc'
+        'manutencaoBloc: $manutencaoBloc'
+        'veiculoBloc: $veiculoBloc'
         '}';
   }
 }

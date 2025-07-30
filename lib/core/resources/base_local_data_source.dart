@@ -1,6 +1,7 @@
-import 'package:pratica/core/resources/base_model.dart';
-import 'package:pratica/data/datasource/local/app_database.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../../data/datasource/local/app_database.dart';
+import 'base_model.dart';
 
 abstract class BaseLocalDataSource<T extends BaseModel> {
   final AppDatabase _appDatabase;
@@ -24,6 +25,10 @@ abstract class BaseLocalDataSource<T extends BaseModel> {
       whereArgs: whereArgs,
     );
   }
+
+  Future<int> deleteById(int id, String campo) async =>
+      await _appDatabase.db
+          .rawDelete('delete from $_tableName where $campo = ?', [id]);
 
   Future<List<T?>> findAll() async {
     return await _appDatabase.db

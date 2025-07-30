@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pratica/presentation/auth/bloc/auth_bloc.dart';
-import 'package:pratica/presentation/auth/bloc/auth_event.dart';
-import 'package:pratica/presentation/inicio/widgets/inicio_button.dart';
-import 'package:pratica/presentation/inicio/widgets/inicio_campo_nome.dart';
-import 'package:pratica/presentation/inicio/widgets/inicio_logo.dart';
+
+import '../../auth/bloc/auth_bloc.dart';
+import '../../auth/bloc/auth_event.dart';
+import 'inicio_button.dart';
+import 'inicio_campo_nome.dart';
+import 'inicio_logo.dart';
 
 class InicioForm extends StatelessWidget {
   const InicioForm({super.key, required this.controller, required this.form});

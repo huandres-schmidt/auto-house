@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:pratica/data/models/veiculo_model.dart';
-import 'package:pratica/domain/controller/preference_controller.dart';
-import 'package:pratica/domain/controller/veiculo_controller.dart';
+
+import '../../../data/models/veiculo_model.dart';
+import '../../../domain/controller/preference_controller.dart';
+import '../../../domain/controller/veiculo_controller.dart';
 
 part 'home_state.dart';
 
@@ -25,6 +26,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       final veiculos = await veiculoController.getAll();
       final nome = preferenceController.getUserName();
+
+      if (veiculos.isEmpty) {
+        emit(HomeVeiculoEmpty(nome: nome));
+        return;
+      }
 
       emit(HomeLoaded(veiculos: veiculos, nome: nome ?? ''));
     } catch (e) {

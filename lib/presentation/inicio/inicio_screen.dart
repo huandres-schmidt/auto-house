@@ -1,7 +1,8 @@
+import 'package:autohouse/presentation/inicio/widgets/inicio_form.dart';
+import 'package:autohouse/presentation/inicio/widgets/inicio_versao_app.dart';
 import 'package:flutter/material.dart';
-import 'package:pratica/core/constants/colors_contants.dart';
-import 'package:pratica/presentation/inicio/widgets/inicio_form.dart';
-import 'package:pratica/presentation/inicio/widgets/inicio_versao_app.dart';
+
+import '../../core/constants/colors_contants.dart';
 
 class InicioScreen extends StatelessWidget {
   InicioScreen({super.key});

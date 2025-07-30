@@ -1,7 +1,8 @@
+import 'package:autohouse/presentation/adicionar_veiculo/widgets/adicionar_veiculo_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
-import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_content.dart';
+
+import 'bloc/adicionar_veiculo_bloc.dart';
 
 class AdicionarScreen extends StatefulWidget {
   const AdicionarScreen({super.key, required this.adicionarVeiculoBloc});

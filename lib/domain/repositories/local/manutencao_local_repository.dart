@@ -1,4 +1,4 @@
-import 'package:pratica/data/models/manutencao_model.dart';
+import '../../../data/models/manutencao_model.dart';
 
 abstract class ManutencaoLocalRepository {
   Future<void> adicionar(ManutencaoModel manutencao);

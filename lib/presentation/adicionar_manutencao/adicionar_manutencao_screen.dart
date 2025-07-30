@@ -1,8 +1,9 @@
+import 'package:autohouse/presentation/adicionar_manutencao/widget/adicionar_manutencao_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pratica/data/models/veiculo_model.dart';
-import 'package:pratica/presentation/adicionar_manutencao/bloc/adicionar_manutencao_bloc.dart';
-import 'package:pratica/presentation/adicionar_manutencao/widget/adicionar_manutencao_content.dart';
+
+import '../../data/models/veiculo_model.dart';
+import 'bloc/adicionar_manutencao_bloc.dart';
 
 class AdicionarManutencaoScreen extends StatefulWidget {
   const AdicionarManutencaoScreen({

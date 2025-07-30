@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pratica/app.dart';
-import 'package:pratica/injector.dart';
+
+import 'app.dart';
+import 'injector.dart';
 
 void main() async {
   final Injector injector = await _initializeApp();

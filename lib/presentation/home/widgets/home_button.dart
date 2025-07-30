@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pratica/config/routes.dart';
-import 'package:pratica/injector.dart';
-import 'package:pratica/presentation/home/bloc/home_bloc.dart';
 
+import '../../../config/routes.dart';
 import '../../../core/constants/colors_contants.dart';
+import '../../../injector.dart';
+import '../bloc/home_bloc.dart';
 
 class HomeButton extends StatelessWidget {
   const HomeButton({super.key});

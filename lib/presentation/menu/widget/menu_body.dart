@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pratica/core/constants/colors_contants.dart';
 
+import '../../../core/constants/colors_contants.dart';
 import '../../../core/constants/font_contants.dart';
 import '../../home/home_screen.dart';
 import '../../manutencao/manutencao_screen.dart';
@@ -46,8 +46,8 @@ class MenuBody extends StatelessWidget {
   List<Widget> _widgetPages() {
     return [
       HomeScreen(homeBloc: menuParams.homeBloc),
-      const ManutencaoScreen(),
-      const VeiculoScreen(),
+      ManutencaoScreen(manutencaoBloc: menuParams.manutencaoBloc),
+      VeiculoScreen(veiculoBloc: menuParams.veiculoBloc),
     ];
   }
 

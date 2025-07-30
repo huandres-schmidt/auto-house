@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pratica/presentation/home/widgets/home_button.dart';
-import 'package:pratica/presentation/home/widgets/home_card_veiculo.dart';
-import 'package:pratica/presentation/home/widgets/home_seus_veiculos.dart';
 
 import '../bloc/home_bloc.dart';
+import 'home_button.dart';
+import 'home_card_veiculo.dart';
+import 'home_seus_veiculos.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key, required this.state});

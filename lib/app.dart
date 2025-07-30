@@ -1,13 +1,15 @@
+import 'package:autohouse/presentation/auth/auth_screen.dart';
+import 'package:autohouse/presentation/auth/bloc/auth_bloc.dart';
+import 'package:autohouse/presentation/auth/bloc/auth_event.dart';
+import 'package:autohouse/presentation/home/bloc/home_bloc.dart';
+import 'package:autohouse/presentation/manutencao/bloc/manutencao_bloc.dart';
+import 'package:autohouse/presentation/menu/bloc/menu_bloc.dart';
+import 'package:autohouse/presentation/veiculo/bloc/veiculo_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pratica/injector.dart';
-import 'package:pratica/presentation/auth/auth_screen.dart';
-import 'package:pratica/presentation/auth/bloc/auth_bloc.dart';
-import 'package:pratica/presentation/auth/bloc/auth_event.dart';
-import 'package:pratica/presentation/home/bloc/home_bloc.dart';
-import 'package:pratica/presentation/menu/bloc/menu_bloc.dart';
 
 import 'config/routes.dart';
+import 'injector.dart';
 
 class AutoHouseApp extends StatelessWidget {
   const AutoHouseApp({super.key, required this.injector});
@@ -27,6 +29,8 @@ class AutoHouseApp extends StatelessWidget {
         home: AuthScreen(
           homeBloc: injector.getIt.get<HomeBloc>(),
           menuBloc: injector.getIt.get<MenuBloc>(),
+          manutencaoBloc: injector.getIt.get<ManutencaoBloc>(),
+          veiculoBloc: injector.getIt.get<VeiculoBloc>(),
         ),
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pratica/core/constants/colors_contants.dart';
 
 import '../../../core/constants/assets_contants.dart';
+import '../../../core/constants/colors_contants.dart';
 
 class InicioLogo extends StatelessWidget {
   const InicioLogo({super.key});

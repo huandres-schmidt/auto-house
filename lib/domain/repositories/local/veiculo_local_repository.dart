@@ -5,5 +5,7 @@ abstract class VeiculoLocalRepository {
 
   Future<int> deletar({String? where, List<Object?>? whereArgs});
 
+  Future<int> deletarId(int id, String campo);
+
   Future<List<VeiculoModel?>> buscarTodos();
 }

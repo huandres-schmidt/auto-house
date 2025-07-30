@@ -1,6 +1,5 @@
-import 'package:pratica/data/plugins/app_package_info.dart';
-
 import '../../data/models/app_info.dart';
+import '../../data/plugins/app_package_info.dart';
 
 class AppSystemInfo {
   static AppSystemInfo? _instance;

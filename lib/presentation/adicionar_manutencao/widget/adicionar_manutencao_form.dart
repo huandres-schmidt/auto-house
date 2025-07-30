@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:pratica/data/models/manutencao_model.dart';
 
 import '../../../core/constants/assets_contants.dart';
 import '../../../core/constants/colors_contants.dart';
 import '../../../core/enum/tipo.dart';
+import '../../../data/models/manutencao_model.dart';
 import '../../../data/models/veiculo_model.dart';
 import '../../adicionar_veiculo/widgets/adicionar_veiculo_text.dart';
 import '../bloc/adicionar_manutencao_bloc.dart';

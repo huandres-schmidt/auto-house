@@ -1,4 +1,4 @@
-import 'package:pratica/domain/repositories/preferences/preferences_local_repository.dart';
+import '../repositories/preferences/preferences_local_repository.dart';
 
 class PreferenceController {
   final PreferencesLocalRepository preferencesLocalRepository;
