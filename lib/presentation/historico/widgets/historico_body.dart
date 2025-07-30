@@ -30,8 +30,7 @@ class HistoricoBody extends StatelessWidget {
           ),
           subtitle: Text(
             'Placa: ${veiculo.placa}\n'
-            'Ano: ${veiculo.ano}\n'
-            'Cor: ${veiculo.cor?.nome}',
+            'Ano: ${veiculo.ano}\n',
             style: TextStyle(fontSize: 16, fontFamily: FontConstants.inter),
           ),
           trailing: SvgPicture.asset(veiculo.marca!.asset, height: 80),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pratica/config/routes.dart';
+import 'package:pratica/injector.dart';
 import 'package:pratica/presentation/home/bloc/home_bloc.dart';
 
 import '../../../core/constants/colors_contants.dart';
@@ -20,7 +20,7 @@ class HomeButton extends StatelessWidget {
         Navigator
             .of(context)
             .pushNamed(AppRoutes.adicionarVeiculo.route)
-            .then((_) => context.read<HomeBloc>().add(const HomeLoad()));
+            .then((_) => getIt<HomeBloc>().add(const HomeLoad()));
         },
       style: ElevatedButton.styleFrom(
         backgroundColor: ColorsConstants.intotheGreen,

@@ -19,6 +19,13 @@ class HistoricoContent extends StatelessWidget {
       appBar: const AppBarPadrao(),
       body: BlocBuilder<HistoricoBloc, HistoricoState>(
         builder: (context, state) {
+          if (state is HistoricoLoading) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: ColorsConstants.intotheGreen,
+              ),
+            );
+          }
           if (state is HistoricoLoaded) {
             return HistoricoBody(veiculo: veiculo, state: state);
           }

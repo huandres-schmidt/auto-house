@@ -64,18 +64,7 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
                     Tipo.values.map((tipo) {
                       return DropdownMenuItem<Tipo>(
                         value: tipo,
-                        child: Row(
-                          children: [
-                            // SvgPicture.asset(
-                            //   marca.asset,
-                            //   height: 35,
-                            //   width: 35,
-                            //   color: ColorsConstants.intotheGreen,
-                            // ),
-                            const SizedBox(width: 10),
-                            Text(tipo.tipo),
-                          ],
-                        ),
+                        child: Text(tipo.tipo),
                       );
                     }).toList(),
                 onChanged: (novaTipo) {

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:pratica/core/constants/colors_contants.dart';
 import 'package:pratica/core/enum/marcas.dart';
 import 'package:pratica/data/models/veiculo_model.dart';
 import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
-import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_form_ano.dart';
-import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_form_modelo.dart';
-import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_form_placa.dart';
-import 'package:pratica/presentation/adicionar_veiculo/widgets/adicionar_veiculo_form_quilometragem.dart';
 
-import '../../../core/enum/cores.dart';
+import '../../../core/constants/assets_contants.dart';
+import '../../../core/enum/modelo.dart';
+import '../../../core/utils/upper_case_text_formatter.dart';
+import '../../../core/utils/validar_placa.dart';
 import 'adicionar_veiculo_button.dart';
+import 'adicionar_veiculo_text.dart';
 
 class AdicionarVeiculoForm extends StatefulWidget {
   const AdicionarVeiculoForm({super.key});
@@ -23,8 +24,6 @@ class AdicionarVeiculoForm extends StatefulWidget {
 class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  final TextEditingController _modelo = TextEditingController();
-
   final TextEditingController _placa = TextEditingController();
 
   final TextEditingController _quilometragem = TextEditingController();
@@ -32,7 +31,7 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
   final TextEditingController _ano = TextEditingController();
 
   Marcas? _marca;
-  Cores? _cor;
+  dynamic _modeloSelecionado;
 
   @override
   Widget build(BuildContext context) {
@@ -45,15 +44,6 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              AdicionarVeiculoFormPlaca(controller: _placa),
-              const SizedBox(height: 10),
-              AdicionarVeiculoFormModelo(controller: _modelo),
-              const SizedBox(height: 10),
-              const SizedBox(height: 10),
-              AdicionarVeiculoFormQuilometragem(controller: _quilometragem),
-              const SizedBox(height: 10),
-              AdicionarVeiculoFormAno(controller: _ano),
-              const SizedBox(height: 10),
               DropdownButton<Marcas>(
                 style: const TextStyle(
                   color: ColorsConstants.intotheGreen,
@@ -79,9 +69,8 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
                           children: [
                             SvgPicture.asset(
                               marca.asset,
-                              height: 35,
-                              width: 35,
-                              color: ColorsConstants.intotheGreen,
+                              height: 30,
+                              width: 30,
                             ),
                             const SizedBox(width: 10),
                             Text(marca.nome),
@@ -96,7 +85,7 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
                 },
               ),
               const SizedBox(height: 10),
-              DropdownButton<Cores>(
+              DropdownButton<dynamic>(
                 style: const TextStyle(
                   color: ColorsConstants.intotheGreen,
                   fontWeight: FontWeight.w500,
@@ -110,28 +99,52 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
                   height: 1.5,
                   color: ColorsConstants.intotheGreen,
                 ),
-                value: _cor,
-                hint: const Text("Escolha uma cor"),
+                value: _modeloSelecionado,
+                hint: const Text("Escolha um modelo"),
                 isExpanded: true,
                 items:
-                    Cores.values.map((cores) {
-                      return DropdownMenuItem<Cores>(
-                        value: cores,
-                        child: Row(
-                          children: [
-                            Container(color: cores.cor, height: 30, width: 30),
-                            const SizedBox(width: 10),
-                            Text(cores.nome),
-                          ],
-                        ),
+                    getModelosByMarca(_marca).map<DropdownMenuItem<dynamic>>((
+                      modelo,
+                    ) {
+                      return DropdownMenuItem<dynamic>(
+                        value: modelo,
+                        child: Text(modelo.modelo),
                       );
                     }).toList(),
-                onChanged: (novaCor) {
+                onChanged: (novoModelo) {
                   setState(() {
-                    _cor = novaCor;
+                    _modeloSelecionado = novoModelo;
                   });
                 },
               ),
+              const SizedBox(height: 10),
+              AdicionarVeiculoText(
+                keyboardType: TextInputType.text,
+                inputFormatters: [UpperCaseTextFormatter()],
+                controller: _placa,
+                validator: (value) => _onAdicionarValidarPlaca(value),
+                assetsConstants: AssetsConstants.iconPlaca,
+                hintText: "Placa",
+              ),
+              const SizedBox(height: 10),
+              AdicionarVeiculoText(
+                keyboardType: TextInputType.number,
+                inputFormatters: [MaskTextInputFormatter(mask: '###.###')],
+                controller: _quilometragem,
+                validator: (value) => _onAdicionarValidarQuilometragem(value),
+                assetsConstants: AssetsConstants.iconMotor,
+                hintText: "Quilometragem",
+              ),
+              const SizedBox(height: 10),
+              AdicionarVeiculoText(
+                keyboardType: TextInputType.number,
+                inputFormatters: [MaskTextInputFormatter(mask: '####')],
+                controller: _ano,
+                validator: (value) => _onAdicionarValidarAno(value),
+                assetsConstants: AssetsConstants.iconAno,
+                hintText: "Ano de Fabricação",
+              ),
+              const SizedBox(height: 10),
               const Spacer(),
               AdicionarVeiculoButton(
                 onPressed: () => _onAdicionarVeiculoSubmit(context),
@@ -143,19 +156,68 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
     );
   }
 
+  List<dynamic> getModelosByMarca(Marcas? marca) {
+    switch (marca) {
+      case Marcas.chevrolet:
+        return ModeloChevrolet.values;
+      case Marcas.volkswagen:
+        return ModeloVolkswagen.values;
+      case Marcas.fiat:
+        return ModeloFiat.values;
+      case Marcas.hyundai:
+        return ModeloHyundai.values;
+      case Marcas.renault:
+        return ModeloRenault.values;
+      case Marcas.honda:
+        return ModeloHonda.values;
+      case Marcas.ford:
+        return ModeloFord.values;
+      case Marcas.jeep:
+        return ModeloJeep.values;
+      case Marcas.peugeot:
+        return ModeloPeugeot.values;
+      case Marcas.toyota:
+        return ModeloToyota.values;
+      default:
+        return [];
+    }
+  }
+
+  String? _onAdicionarValidarPlaca(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Placa é obrigatório';
+    }
+    if (!ValidarPlaca.validarPlaca(value)) {
+      return 'Placa inválida';
+    }
+    return null;
+  }
+
+  String? _onAdicionarValidarQuilometragem(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Quilometragem é obrigatório';
+    }
+    return null;
+  }
+
+  String? _onAdicionarValidarAno(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Ano é obrigatório';
+    }
+    return null;
+  }
+
   void _onAdicionarVeiculoSubmit(BuildContext context) {
     if (formKey.currentState?.validate() ?? false) {
-      final modelo = _modelo.text;
       final placa = _placa.text;
       final quilometragem = _quilometragem.text;
       final ano = _ano.text;
 
       VeiculoModel veiculo = VeiculoModel(
-        modelo: modelo,
+        modelo: _modeloSelecionado?.modelo,
         placa: placa,
         quilometragem: quilometragem,
         ano: int.parse(ano),
-        cor: _cor,
         marca: _marca,
       );
 

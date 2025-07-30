@@ -37,6 +37,7 @@ class AdicionarVeiculoBloc
   ) async {
     try {
       emit(const AdicionarVeiculoLoading());
+      veiculoController.isVeiculoValid(event.veiculo);
       await veiculoController.isVeiculoExist(event.veiculo.placa ?? '');
       await veiculoController.insert(event.veiculo);
       emit(const AdicionarVeiculoSuccess());

@@ -17,6 +17,7 @@ class HomeBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          Center(child: HomeTitle(text: 'Bem-vindo ${state.nome}')),
           const HomeButton(),
           const SizedBox(height: 20.0),
           const HomeTitle(text: 'Seus Veículos'),

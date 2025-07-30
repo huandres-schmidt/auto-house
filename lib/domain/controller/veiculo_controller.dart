@@ -17,10 +17,19 @@ class VeiculoController {
   Future<void> isVeiculoExist(String placa) async {
     final veiculos = await veiculoLocalRepository.buscarTodos();
     veiculos.any((veiculo) {
-      if(veiculo?.placa == placa) {
+      if (veiculo?.placa == placa) {
         throw Exception('Veículo com placa $placa já existe.');
       }
       return false;
     });
+  }
+
+  void isVeiculoValid(VeiculoModel veiculo) {
+    if (veiculo.marca == null) {
+      throw Exception('Marca é obrigatória');
+    }
+    if (veiculo.modelo == null || veiculo.modelo!.isEmpty) {
+      throw Exception('Modelo é obrigatório');
+    }
   }
 }

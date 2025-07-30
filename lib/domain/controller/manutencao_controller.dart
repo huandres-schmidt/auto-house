@@ -22,4 +22,10 @@ class ManutencaoController {
               .toList(),
     );
   }
+
+  void manutencaoValid (ManutencaoModel manutencao) {
+    if (manutencao.tipo == null) {
+      throw Exception('Tipo de manutenção é obrigatório');
+    }
+  }
 }

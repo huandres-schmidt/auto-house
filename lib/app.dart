@@ -5,6 +5,7 @@ import 'package:pratica/presentation/auth/auth_screen.dart';
 import 'package:pratica/presentation/auth/bloc/auth_bloc.dart';
 import 'package:pratica/presentation/auth/bloc/auth_event.dart';
 import 'package:pratica/presentation/home/bloc/home_bloc.dart';
+import 'package:pratica/presentation/menu/bloc/menu_bloc.dart';
 
 import 'config/routes.dart';
 
@@ -23,7 +24,10 @@ class AutoHouseApp extends StatelessWidget {
         title: 'AutoHouse',
         theme: ThemeData(primarySwatch: Colors.blue),
         onGenerateRoute: (settings) => Routes.router(settings, injector),
-        home: AuthScreen(homeBloc: injector.getIt.get<HomeBloc>()),
+        home: AuthScreen(
+          homeBloc: injector.getIt.get<HomeBloc>(),
+          menuBloc: injector.getIt.get<MenuBloc>(),
+        ),
       ),
     );
   }

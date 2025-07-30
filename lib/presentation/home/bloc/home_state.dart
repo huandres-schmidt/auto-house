@@ -1,12 +1,13 @@
 part of 'home_bloc.dart';
 
 abstract class HomeState extends Equatable {
-  const HomeState({this.veiculos = const []});
+  const HomeState({this.veiculos = const [], this.nome = '',});
 
   final List<VeiculoModel?> veiculos;
+  final String nome;
 
   @override
-  List<Object> get props => [veiculos];
+  List<Object> get props => [veiculos, nome];
 }
 
 final class HomeInitial extends HomeState {
@@ -24,10 +25,10 @@ final class HomeLoading extends HomeState {
 }
 
 final class HomeLoaded extends HomeState {
-  const HomeLoaded({required super.veiculos});
+  const HomeLoaded({required super.veiculos, required super.nome});
 
   @override
-  List<Object> get props => [veiculos];
+  List<Object> get props => [veiculos, nome];
 }
 
 final class HomeFail extends HomeState {

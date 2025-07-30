@@ -4,7 +4,6 @@ CREATE TABLE VEICULO (
     modelo              TEXT,
     quilometragem       TEXT,
     ano                 INTEGER,
-    cor                 TEXT,
     marca               TEXT
 );
 

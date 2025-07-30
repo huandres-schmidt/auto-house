@@ -21,12 +21,7 @@ class HomeContent extends StatelessWidget {
           height: 48,
           color: ColorsConstants.intotheGreen,
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout, color: ColorsConstants.intotheGreen),
-            onPressed: () {},
-          ),
-        ],
+        centerTitle: true,
       ),
       body: BlocConsumer<HomeBloc, HomeState>(
         listener: _listener,

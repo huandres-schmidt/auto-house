@@ -13,6 +13,7 @@ import 'package:pratica/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bl
 import 'package:pratica/presentation/auth/bloc/auth_bloc.dart';
 import 'package:pratica/presentation/historico/bloc/historico_bloc.dart';
 import 'package:pratica/presentation/home/bloc/home_bloc.dart';
+import 'package:pratica/presentation/menu/bloc/menu_bloc.dart';
 
 import 'data/datasource/local/app_database.dart';
 import 'data/datasource/local/shared_data.dart';
@@ -75,7 +76,12 @@ final class InjectorImpl extends Injector {
     );
 
     /// BLoC--------------------------------------------------------------------
-    getIt.registerSingleton<HomeBloc>(HomeBloc(getIt.get<VeiculoController>()));
+    getIt.registerSingleton<HomeBloc>(
+      HomeBloc(
+        getIt.get<VeiculoController>(),
+        getIt.get<PreferenceController>(),
+      ),
+    );
 
     getIt.registerSingleton<AdicionarVeiculoBloc>(
       AdicionarVeiculoBloc(getIt.get<VeiculoController>()),
@@ -91,6 +97,10 @@ final class InjectorImpl extends Injector {
 
     getIt.registerSingleton<HistoricoBloc>(
       HistoricoBloc(getIt.get<ManutencaoController>()),
+    );
+
+    getIt.registerSingleton<MenuBloc>(
+      MenuBloc(),
     );
 
     return InjectorImpl._(getIt);

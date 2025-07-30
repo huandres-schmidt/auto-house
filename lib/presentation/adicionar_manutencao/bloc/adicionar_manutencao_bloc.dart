@@ -37,6 +37,7 @@ class AdicionarManutencaoBloc
   ) async {
     try {
       emit(const AdicionarManutencaoLoading());
+      _manutencaoController.manutencaoValid(event.manutencao);
       await _manutencaoController.adicionarManutencao(event.manutencao);
       emit(const AdicionarManutencaoSuccess());
     } catch (e) {
