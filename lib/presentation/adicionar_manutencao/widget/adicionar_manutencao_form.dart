@@ -1,3 +1,4 @@
+import 'package:autohouse/core/utils/extension/string_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -27,7 +28,6 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
   final TextEditingController _peca = TextEditingController();
   final TextEditingController _marca = TextEditingController();
   final TextEditingController _quilometragem = TextEditingController();
-  final TextEditingController _data = TextEditingController();
   final TextEditingController _valor = TextEditingController();
   final TextEditingController _observacao = TextEditingController();
   Tipo? _tipo;
@@ -103,15 +103,6 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
               const SizedBox(height: 10),
               const SizedBox(height: 10),
               AdicionarVeiculoText(
-                inputFormatters: [MaskTextInputFormatter(mask: '##/##/####')],
-                keyboardType: TextInputType.number,
-                controller: _data,
-                validator: (value) => _onAdicionarValidarTipo(value),
-                hintText: 'Data',
-                assetsConstants: AssetsConstants.iconAno,
-              ),
-              const SizedBox(height: 10),
-              AdicionarVeiculoText(
                 inputFormatters: const [],
                 keyboardType: TextInputType.number,
                 controller: _valor,
@@ -152,9 +143,10 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
       final peca = _peca.text;
       final marca = _marca.text;
       final quilometragem = _quilometragem.text;
-      final data = _data.text;
       final valor = _valor.text;
+      final data = DateTime.now().toIso8601String().formataData();
       final observacao = _observacao.text;
+
 
       ManutencaoModel manutencao = ManutencaoModel(
         tipo: tipo,

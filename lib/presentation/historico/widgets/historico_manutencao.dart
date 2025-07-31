@@ -22,21 +22,22 @@ class HistoricoManutencao extends StatelessWidget {
         color: ColorsConstants.whiteSolid,
         child: ListTile(
           leading: Image.asset(
-            manutencao!.tipo!.asset,
+            manutencao?.tipo?.asset ?? '',
             color: manutencao?.tipo?.color,
+            height: 40,
+            width: 40,
           ),
           title: Text(
-            manutencao!.tipo!.tipo,
+            '${manutencao?.tipo?.tipo}',
             style: TextStyle(
-              fontSize: 18,
               fontFamily: FontConstants.inter,
               fontWeight: FontWeight.bold,
             ),
           ),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 20),
           subtitle: Text(
-            'Data: ${manutencao?.data}\n'
-            'Valor: R\$ ${manutencao?.valor?.toStringAsFixed(2)}',
-            style: TextStyle(fontSize: 16, fontFamily: FontConstants.inter),
+            '${manutencao?.data} - R\$ ${manutencao?.valor?.toStringAsFixed(2)}',
+            style: TextStyle(fontFamily: FontConstants.inter),
           ),
         ),
       ),

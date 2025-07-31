@@ -13,3 +13,12 @@ final class ManutencaoLoad extends ManutencaoEvent {
   @override
   List<Object?> get props => [];
 }
+
+final class ManutencaoSearch extends ManutencaoEvent {
+  const ManutencaoSearch({required this.search});
+
+  final String search;
+
+  @override
+  List<Object?> get props => [search];
+}

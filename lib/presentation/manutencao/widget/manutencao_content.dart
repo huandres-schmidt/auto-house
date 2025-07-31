@@ -1,12 +1,12 @@
-import 'package:autohouse/core/constants/font_contants.dart';
+import 'package:autohouse/presentation/manutencao/widget/manutencao_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/constants/colors_contants.dart';
+import '../../../core/constants/font_contants.dart';
 import '../../components/app_bar_padrao.dart';
-import '../../components/divider_custom.dart';
 import '../bloc/manutencao_bloc.dart';
-import 'manutencao_card.dart';
+import 'manutencao_empty.dart';
 
 class ManutencaoContent extends StatelessWidget {
   const ManutencaoContent({super.key});
@@ -16,47 +16,74 @@ class ManutencaoContent extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorsConstants.whiteSolid,
       appBar: const AppBarPadrao(),
-      body: BlocBuilder<ManutencaoBloc, ManutencaoState>(
-        builder: (context, state) {
-          if (state is ManutencaoLoading) {
-            return const Center(
-              child: CircularProgressIndicator(
-                color: ColorsConstants.intotheGreen,
-              ),
-            );
-          }
-          if (state is ManutencaoLoaded) {
-            return Column(
-              children: [
-                SizedBox(
-                  height: 500,
-                  child: ListView.separated(
-                    itemCount: state.manutencoes.length,
-                    separatorBuilder: (context, index) => const DividerCustom(),
-                    itemBuilder: (context, index) {
-                      final manutencao = state.manutencoes[index];
-                      return ManutencaoCard(manutencao: manutencao);
-                    },
-                  ),
-                ),
-              ],
-            );
-          }
-          if (state is ManutencaoEmpty) {
-            return Center(
-              child: Text(
-                'Nenhuma manutenção encontrada.',
-                style: TextStyle(
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 5.0,
+              left: 16.0,
+              right: 16.0,
+              bottom: 5.0,
+            ),
+            child: TextFormField(
+              onChanged: (value) {
+                context.read<ManutencaoBloc>().add(
+                  ManutencaoSearch(search: value),
+                );
+              },
+              decoration: InputDecoration(
+                hintText: 'Pesquisar Manutenção',
+                hintStyle: TextStyle(
                   color: ColorsConstants.intotheGreen,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
                   fontFamily: FontConstants.inter,
                 ),
+                prefixIcon: const Icon(
+                  Icons.search,
+                  color: ColorsConstants.intotheGreen,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: const BorderSide(
+                    color: ColorsConstants.intotheGreen,
+                    width: 2.0,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: const BorderSide(
+                    color: ColorsConstants.intotheGreen,
+                    width: 2.0,
+                  ),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: const BorderSide(
+                    color: ColorsConstants.intotheGreen,
+                    width: 2.0,
+                  ),
+                ),
               ),
-            );
-          }
-          return const Center();
-        },
+            ),
+          ),
+          BlocBuilder<ManutencaoBloc, ManutencaoState>(
+            builder: (context, state) {
+              if (state is ManutencaoLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: ColorsConstants.intotheGreen,
+                  ),
+                );
+              }
+              if (state is ManutencaoLoaded) {
+                return ManutencaoBody(state: state);
+              }
+              if (state is ManutencaoEmpty) {
+                return const ManutencaoEmptyList();
+              }
+              return const Center();
+            },
+          ),
+        ],
       ),
     );
   }
