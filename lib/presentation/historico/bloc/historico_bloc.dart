@@ -1,9 +1,9 @@
 import 'dart:async';
 
+import 'package:autohouse/data/models/manutencao_veiculo_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../data/models/manutencao_model.dart';
 import '../../../domain/controller/manutencao_controller.dart';
 
 part 'historico_event.dart';

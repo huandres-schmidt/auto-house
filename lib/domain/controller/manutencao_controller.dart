@@ -17,13 +17,10 @@ class ManutencaoController {
     await _manutencaoLocalRepository.adicionar(manutencao);
   }
 
-  Future<List<ManutencaoModel?>> getListManuntencaoById(int id) async {
-    return await _manutencaoLocalRepository.getAllManutencoes().then(
-      (manutencoes) =>
-          manutencoes
-              .where((manutencao) => manutencao?.veiculoId == id)
-              .toList(),
-    );
+  Future<List<ManutencaoVeiculoModel?>> getListManuntencaoById(int id) async {
+    final manutencao = await getListManutencao();
+
+    return manutencao.where((element) => element.veiculo?.id == id).toList();
   }
 
   Future<List<ManutencaoVeiculoModel>> getListManutencao() async {

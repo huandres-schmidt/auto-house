@@ -3,7 +3,7 @@ part of 'historico_bloc.dart';
 abstract class HistoricoState extends Equatable {
   const HistoricoState({this.manutencoes = const []});
 
-  final List<ManutencaoModel?> manutencoes;
+  final List<ManutencaoVeiculoModel?> manutencoes;
 
   @override
   List<Object?> get props => [manutencoes];

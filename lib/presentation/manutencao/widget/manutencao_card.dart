@@ -1,3 +1,4 @@
+import 'package:autohouse/config/routes.dart';
 import 'package:autohouse/core/constants/font_contants.dart';
 import 'package:autohouse/data/models/manutencao_veiculo_model.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,12 @@ class ManutencaoCard extends StatelessWidget {
       child: Card(
         color: ColorsConstants.whiteSolid,
         child: ListTile(
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              AppRoutes.detalhesManutencao.route,
+              arguments: manutencao,
+            );
+          },
           leading: Image.asset(
             manutencao?.manutecao?.tipo?.asset ?? '',
             color: manutencao?.manutecao?.tipo?.color,

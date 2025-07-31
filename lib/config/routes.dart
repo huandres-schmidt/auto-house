@@ -1,3 +1,8 @@
+import 'package:autohouse/data/models/manutencao_veiculo_model.dart';
+import 'package:autohouse/presentation/detalhes_manutencao/detalhes_manutencao_screen.dart';
+import 'package:autohouse/presentation/manutencao/manutencao_screen.dart';
+import 'package:autohouse/presentation/veiculo/bloc/veiculo_bloc.dart';
+import 'package:autohouse/presentation/veiculo/veiculo_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../data/models/veiculo_model.dart';
@@ -12,6 +17,7 @@ import '../presentation/historico/historico_screen.dart';
 import '../presentation/home/bloc/home_bloc.dart';
 import '../presentation/home/home_screen.dart';
 import '../presentation/inicio/inicio_screen.dart';
+import '../presentation/manutencao/bloc/manutencao_bloc.dart';
 
 enum NavigationFlow { simple, modalBottomUp }
 
@@ -20,7 +26,10 @@ enum AppRoutes {
   home('/home', NavigationFlow.simple),
   adicionarVeiculo('/adicionar-veiculo', NavigationFlow.simple),
   historicoVeiculo('/historico-veiculo', NavigationFlow.simple),
-  adicionarManutencao('/adicionar-manutencao', NavigationFlow.modalBottomUp);
+  adicionarManutencao('/adicionar-manutencao', NavigationFlow.modalBottomUp),
+  manutencoes('/manutencoes', NavigationFlow.modalBottomUp),
+  veiculos('/veiculos', NavigationFlow.modalBottomUp),
+  detalhesManutencao('detalhes-manutencao', NavigationFlow.simple);
 
   final String route;
   final NavigationFlow flow;
@@ -52,6 +61,15 @@ class Routes {
       AppRoutes.adicionarManutencao => AdicionarManutencaoScreen(
         adicionarManutencaoBloc: injector.getIt.get<AdicionarManutencaoBloc>(),
         veiculo: settings.arguments as VeiculoModel,
+      ),
+      AppRoutes.detalhesManutencao => DetalhesManutencaoScreen(
+        manutencao: settings.arguments as ManutencaoVeiculoModel,
+      ),
+      AppRoutes.manutencoes => ManutencaoScreen(
+        manutencaoBloc: injector.getIt.get<ManutencaoBloc>(),
+      ),
+      AppRoutes.veiculos => VeiculoScreen(
+        veiculoBloc: injector.getIt.get<VeiculoBloc>(),
       ),
     };
 

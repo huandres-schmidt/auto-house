@@ -1,13 +1,14 @@
+import 'package:autohouse/data/models/manutencao_veiculo_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../../config/routes.dart';
 import '../../../core/constants/colors_contants.dart';
 import '../../../core/constants/font_contants.dart';
-import '../../../data/models/manutencao_model.dart';
 
 class HistoricoManutencao extends StatelessWidget {
   const HistoricoManutencao({super.key, required this.manutencao});
 
-  final ManutencaoModel? manutencao;
+  final ManutencaoVeiculoModel? manutencao;
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +22,20 @@ class HistoricoManutencao extends StatelessWidget {
       child: Card(
         color: ColorsConstants.whiteSolid,
         child: ListTile(
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              AppRoutes.detalhesManutencao.route,
+              arguments: manutencao,
+            );
+          },
           leading: Image.asset(
-            manutencao?.tipo?.asset ?? '',
-            color: manutencao?.tipo?.color,
+            manutencao?.manutecao?.tipo?.asset ?? '',
+            color: manutencao?.manutecao?.tipo?.color,
             height: 40,
             width: 40,
           ),
           title: Text(
-            '${manutencao?.tipo?.tipo}',
+            '${manutencao?.manutecao?.tipo?.tipo}',
             style: TextStyle(
               fontFamily: FontConstants.inter,
               fontWeight: FontWeight.bold,
@@ -36,7 +43,8 @@ class HistoricoManutencao extends StatelessWidget {
           ),
           trailing: const Icon(Icons.arrow_forward_ios, size: 20),
           subtitle: Text(
-            '${manutencao?.data} - R\$ ${manutencao?.valor?.toStringAsFixed(2)}',
+            '${manutencao?.manutecao?.data} -'
+            ' R\$ ${manutencao?.manutecao?.valor?.toStringAsFixed(2)}',
             style: TextStyle(fontFamily: FontConstants.inter),
           ),
         ),
