@@ -13,7 +13,6 @@ class ManutencaoModel extends BaseModel {
   final String? data;
   final double? valor;
   final String? observacao;
-  final VeiculoModel? veiculo;
 
   ManutencaoModel({
     this.id,
@@ -25,7 +24,6 @@ class ManutencaoModel extends BaseModel {
     this.data,
     this.valor,
     this.observacao,
-    this.veiculo,
   });
 
   ManutencaoModel copyWith({
@@ -50,7 +48,6 @@ class ManutencaoModel extends BaseModel {
       data: data ?? this.data,
       valor: valor ?? this.valor,
       observacao: observacao ?? this.observacao,
-      veiculo: veiculo ?? this.veiculo,
     );
   }
 
@@ -97,7 +94,6 @@ class ManutencaoModel extends BaseModel {
         'data: $data, '
         'valor: $valor,'
         ' descricao: $observacao,'
-        'veiculo: $veiculo'
         '}';
   }
 }

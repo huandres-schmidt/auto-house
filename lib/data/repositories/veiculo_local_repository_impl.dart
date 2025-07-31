@@ -20,8 +20,6 @@ class VeiculoLocalRepositoryImpl extends BaseLocalDataSource<VeiculoModel>
     return await delete(where: where, whereArgs: whereArgs);
   }
 
-
-
   @override
   Future<List<VeiculoModel?>> buscarTodos() async {
     return await findAll();

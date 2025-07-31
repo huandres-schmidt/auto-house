@@ -76,6 +76,7 @@ final class InjectorImpl extends Injector {
     getIt.registerSingleton<ManutencaoController>(
       ManutencaoController(
         getIt.get<ManutencaoLocalRepository>(),
+        getIt.get<VeiculoLocalRepository>(),
       ),
     );
 

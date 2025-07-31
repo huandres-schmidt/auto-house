@@ -1,9 +1,9 @@
 import 'dart:async';
 
+import 'package:autohouse/data/models/manutencao_veiculo_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../data/models/manutencao_model.dart';
 import '../../../domain/controller/manutencao_controller.dart';
 part 'manutencao_event.dart';
 
@@ -22,7 +22,8 @@ class ManutencaoBloc extends Bloc<ManutencaoEvent, ManutencaoState> {
     Emitter<ManutencaoState> emit,
   ) async {
     try {
-      final result = await _manutencaoController.listarManutencoes();
+      final result = await _manutencaoController.getListManutencao();
+
       if (result.isEmpty) {
         emit(const ManutencaoEmpty());
         return;

@@ -47,4 +47,9 @@ abstract class BaseLocalDataSource<T extends BaseModel> {
       WHERE $where
       """);
   }
+
+  Future<List<T>> query(String sql, [List<dynamic>? arguments]) async {
+    final list = await _appDatabase.db.rawQuery(sql, arguments);
+    return list.map<T>((json) => _fromMap(json)).toList();
+  }
 }

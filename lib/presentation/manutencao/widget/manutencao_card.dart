@@ -1,13 +1,13 @@
+import 'package:autohouse/core/constants/font_contants.dart';
+import 'package:autohouse/data/models/manutencao_veiculo_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/colors_contants.dart';
-import '../../../core/constants/font_contants.dart';
-import '../../../data/models/manutencao_model.dart';
 
 class ManutencaoCard extends StatelessWidget {
   const ManutencaoCard({super.key, required this.manutencao});
 
-  final ManutencaoModel? manutencao;
+  final ManutencaoVeiculoModel? manutencao;
 
   @override
   Widget build(BuildContext context) {
@@ -22,25 +22,22 @@ class ManutencaoCard extends StatelessWidget {
         color: ColorsConstants.whiteSolid,
         child: ListTile(
           leading: Image.asset(
-            manutencao!.tipo!.asset,
-            color: manutencao?.tipo?.color,
+            manutencao?.manutecao?.tipo?.asset ?? '',
+            color: manutencao?.manutecao?.tipo?.color,
+            height: 40,
+            width: 40,
           ),
           title: Text(
-            manutencao!.tipo!.tipo,
+            '${manutencao?.manutecao?.tipo?.tipo}',
             style: TextStyle(
-              fontSize: 18,
               fontFamily: FontConstants.inter,
               fontWeight: FontWeight.bold,
             ),
           ),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 20),
           subtitle: Text(
-            'Data: ${manutencao?.data}\n'
-            'Valor: R\$ ${manutencao?.valor?.toStringAsFixed(2)}\n'
-            'Veículo: ${manutencao?.veiculo?.modelo ?? ''}',
-            style: TextStyle(
-              fontSize: 16,
-              fontFamily: FontConstants.inter,
-            ),
+            '${manutencao?.manutecao?.data} - ${manutencao?.veiculo?.modelo}',
+            style: TextStyle(fontFamily: FontConstants.inter),
           ),
         ),
       ),

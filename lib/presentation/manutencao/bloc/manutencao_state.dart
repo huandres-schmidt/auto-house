@@ -3,7 +3,7 @@ part of 'manutencao_bloc.dart';
 abstract class ManutencaoState extends Equatable {
   const ManutencaoState({this.manutencoes = const []});
 
-  final List<ManutencaoModel?> manutencoes;
+  final List<ManutencaoVeiculoModel?> manutencoes;
 
   @override
   List<Object?> get props => [manutencoes];
