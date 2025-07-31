@@ -15,7 +15,12 @@ final class HistoricoLoading extends HistoricoState {}
 
 final class HistoricoLoaded extends HistoricoState {
   const HistoricoLoaded({super.manutencoes});
+
+  @override
+  List<Object?> get props => [manutencoes];
 }
+
+final class HistoricoEmpty extends HistoricoState {}
 
 final class HistoricoFail extends HistoricoState {
   final String message;

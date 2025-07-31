@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/constants/colors_contants.dart';
 import '../../components/app_bar_padrao.dart';
+import '../../components/divider_custom.dart';
 import '../bloc/manutencao_bloc.dart';
 import 'manutencao_card.dart';
 
@@ -31,7 +32,7 @@ class ManutencaoContent extends StatelessWidget {
                   height: 500,
                   child: ListView.separated(
                     itemCount: state.manutencoes.length,
-                    separatorBuilder: (context, index) => const Divider(),
+                    separatorBuilder: (context, index) => const DividerCustom(),
                     itemBuilder: (context, index) {
                       final manutencao = state.manutencoes[index];
                       return ManutencaoCard(manutencao: manutencao);

@@ -27,7 +27,7 @@ class VeiculoBody extends StatelessWidget {
         itemBuilder: (context, index) {
           final veiculo = state.veiculos[index];
           return Card(
-            color: ColorsConstants.whiteEdgar,
+            color: ColorsConstants.whiteSolid,
             child: ListTile(
               onTap: () {
                 Navigator.of(context).pushNamed(

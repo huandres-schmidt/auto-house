@@ -1,3 +1,5 @@
+import 'package:autohouse/data/models/veiculo_model.dart';
+
 import '../../core/enum/tipo.dart';
 import '../../core/resources/base_model.dart';
 
@@ -11,6 +13,7 @@ class ManutencaoModel extends BaseModel {
   final String? data;
   final double? valor;
   final String? observacao;
+  final VeiculoModel? veiculo;
 
   ManutencaoModel({
     this.id,
@@ -22,7 +25,34 @@ class ManutencaoModel extends BaseModel {
     this.data,
     this.valor,
     this.observacao,
+    this.veiculo,
   });
+
+  ManutencaoModel copyWith({
+    int? id,
+    int? veiculoId,
+    Tipo? tipo,
+    String? nomePeca,
+    String? marca,
+    String? quilometragem,
+    String? data,
+    double? valor,
+    String? observacao,
+    VeiculoModel? veiculo,
+  }) {
+    return ManutencaoModel(
+      id: id ?? this.id,
+      veiculoId: veiculoId ?? this.veiculoId,
+      tipo: tipo ?? this.tipo,
+      nomePeca: nomePeca ?? this.nomePeca,
+      marca: marca ?? this.marca,
+      quilometragem: quilometragem ?? this.quilometragem,
+      data: data ?? this.data,
+      valor: valor ?? this.valor,
+      observacao: observacao ?? this.observacao,
+      veiculo: veiculo ?? this.veiculo,
+    );
+  }
 
   factory ManutencaoModel.fromJson(Map<String, dynamic> json) {
     return ManutencaoModel(
@@ -67,6 +97,7 @@ class ManutencaoModel extends BaseModel {
         'data: $data, '
         'valor: $valor,'
         ' descricao: $observacao,'
+        'veiculo: $veiculo'
         '}';
   }
 }

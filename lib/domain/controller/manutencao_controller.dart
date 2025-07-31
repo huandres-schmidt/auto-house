@@ -5,7 +5,9 @@ import '../repositories/local/manutencao_local_repository.dart';
 class ManutencaoController {
   final ManutencaoLocalRepository _manutencaoLocalRepository;
 
-  ManutencaoController(this._manutencaoLocalRepository);
+  ManutencaoController(
+    this._manutencaoLocalRepository,
+  );
 
   Future<void> adicionarManutencao(ManutencaoModel manutencao) async {
     await _manutencaoLocalRepository.adicionar(manutencao);
@@ -24,7 +26,7 @@ class ManutencaoController {
     );
   }
 
-  void manutencaoValid (ManutencaoModel manutencao) {
+  void manutencaoValid(ManutencaoModel manutencao) {
     if (manutencao.tipo == null) {
       throw Exception('Tipo de manutenção é obrigatório');
     }

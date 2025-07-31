@@ -1,3 +1,4 @@
+import 'package:autohouse/core/constants/font_contants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/colors_contants.dart';
@@ -13,9 +14,13 @@ class DialogCustom {
             color: ColorsConstants.intotheGreen,
             size: 60,
           ),
-          title: Text(title),
+          title: Text(title, style: TextStyle(fontFamily: FontConstants.inter)),
           backgroundColor: ColorsConstants.whiteSolid,
-          content: Text(content),
+          content: Text(
+            content,
+            style: TextStyle(fontFamily: FontConstants.inter),
+            textAlign: TextAlign.center,
+          ),
           actions: [
             Center(
               child: ElevatedButton(
@@ -33,10 +38,7 @@ class DialogCustom {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-                child: const Text(
-                  'OK',
-                  style: TextStyle(color: Colors.white),
-                ),
+                child: const Text('OK', style: TextStyle(color: Colors.white)),
               ),
             ),
           ],
@@ -51,9 +53,13 @@ class DialogCustom {
       builder: (context) {
         return AlertDialog(
           icon: const Icon(Icons.cancel, color: Colors.red, size: 60),
-          title: Text(title),
+          title: Text(title, style: TextStyle(fontFamily: FontConstants.inter)),
           backgroundColor: ColorsConstants.whiteSolid,
-          content: Text(content),
+          content: Text(
+            content,
+            style: TextStyle(fontFamily: FontConstants.inter),
+            textAlign: TextAlign.center,
+          ),
           actions: [
             Center(
               child: ElevatedButton(
@@ -70,10 +76,7 @@ class DialogCustom {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-                child: const Text(
-                  'OK',
-                  style: TextStyle(color: Colors.white),
-                ),
+                child: const Text('OK', style: TextStyle(color: Colors.white)),
               ),
             ),
           ],

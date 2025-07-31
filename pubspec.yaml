@@ -45,6 +45,8 @@ flutter:
     - assets/images/icon/ano.png
     - assets/images/icon/peca.png
     - assets/images/icon/marca_peca.png
+    - assets/images/icon/manutencao_corretiva.png
+    - assets/images/icon/manutencao_preventiva.png
     #Marcas
     - assets/images/marca/chevrolet.svg
     - assets/images/marca/fiat.svg

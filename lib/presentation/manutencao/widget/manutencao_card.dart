@@ -21,6 +21,10 @@ class ManutencaoCard extends StatelessWidget {
       child: Card(
         color: ColorsConstants.whiteSolid,
         child: ListTile(
+          leading: Image.asset(
+            manutencao!.tipo!.asset,
+            color: manutencao?.tipo?.color,
+          ),
           title: Text(
             manutencao!.tipo!.tipo,
             style: TextStyle(
@@ -30,9 +34,9 @@ class ManutencaoCard extends StatelessWidget {
             ),
           ),
           subtitle: Text(
-            'Km: ${manutencao?.marca}\n'
             'Data: ${manutencao?.data}\n'
-            'Valor: R\$ ${manutencao?.valor?.toStringAsFixed(2)}',
+            'Valor: R\$ ${manutencao?.valor?.toStringAsFixed(2)}\n'
+            'Veículo: ${manutencao?.veiculo?.modelo ?? ''}',
             style: TextStyle(
               fontSize: 16,
               fontFamily: FontConstants.inter,

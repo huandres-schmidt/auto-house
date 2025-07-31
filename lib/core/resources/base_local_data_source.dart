@@ -26,9 +26,8 @@ abstract class BaseLocalDataSource<T extends BaseModel> {
     );
   }
 
-  Future<int> deleteById(int id, String campo) async =>
-      await _appDatabase.db
-          .rawDelete('delete from $_tableName where $campo = ?', [id]);
+  Future<int> deleteById(int id, String campo) async => await _appDatabase.db
+      .rawDelete('delete from $_tableName where $campo = ?', [id]);
 
   Future<List<T?>> findAll() async {
     return await _appDatabase.db
@@ -36,13 +35,16 @@ abstract class BaseLocalDataSource<T extends BaseModel> {
         .then((value) => value.map<T>((e) => _fromMap(e)).toList());
   }
 
+  Future<T?> findById({String? where, List<Object?>? whereArgs}) async =>
+      await _appDatabase.db
+          .query(_tableName, where: where, whereArgs: whereArgs)
+          .then((value) => value.isNotEmpty ? _fromMap(value.first) : null);
+
   Future<int> update(int id, valor, String coluna, String where) async {
-    return await _appDatabase.db.rawUpdate(
-      """
+    return await _appDatabase.db.rawUpdate("""
       UPDATE $_tableName
       SET $coluna = $valor
       WHERE $where
-      """
-    );
+      """);
   }
 }

@@ -165,6 +165,7 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
         data: data,
         valor: double.tryParse(valor),
         observacao: observacao,
+        veiculo: widget.veiculo,
       );
 
       context.read<AdicionarManutencaoBloc>().add(

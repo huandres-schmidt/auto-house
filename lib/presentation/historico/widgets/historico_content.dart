@@ -5,6 +5,7 @@ import '../../../data/models/veiculo_model.dart';
 import '../../components/app_bar_padrao.dart';
 import '../bloc/historico_bloc.dart';
 import 'historico_body.dart';
+import 'historico_list_empty.dart';
 
 class HistoricoContent extends StatelessWidget {
   const HistoricoContent({super.key, required this.veiculo});
@@ -27,6 +28,9 @@ class HistoricoContent extends StatelessWidget {
           }
           if (state is HistoricoLoaded) {
             return HistoricoBody(veiculo: veiculo, state: state);
+          }
+          if (state is HistoricoEmpty) {
+            return HistoricoListEmpty(veiculo: veiculo);
           }
           return const Center();
         },

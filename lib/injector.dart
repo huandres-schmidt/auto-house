@@ -74,7 +74,9 @@ final class InjectorImpl extends Injector {
     );
 
     getIt.registerSingleton<ManutencaoController>(
-      ManutencaoController(getIt.get<ManutencaoLocalRepository>()),
+      ManutencaoController(
+        getIt.get<ManutencaoLocalRepository>(),
+      ),
     );
 
     /// BLoC--------------------------------------------------------------------

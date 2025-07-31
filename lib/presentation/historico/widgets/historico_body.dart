@@ -23,24 +23,17 @@ class HistoricoBody extends StatelessWidget {
         HistoricoDadosVeiculo(veiculo: veiculo),
         const HistoricoText(),
         const Divider(indent: 20.0, endIndent: 20.0),
-        state.manutencoes.isEmpty
-            ? const Center(
-              child: Text(
-                'Nenhuma manutenção registrada.',
-                style: TextStyle(fontSize: 18),
-              ),
-            )
-            : SizedBox(
-              height: 500,
-              child: ListView.separated(
-                itemCount: state.manutencoes.length,
-                separatorBuilder: (context, index) => const DividerCustom(),
-                itemBuilder: (context, index) {
-                  final manutencao = state.manutencoes[index];
-                  return HistoricoManutencao(manutencao: manutencao);
-                },
-              ),
-            ),
+        SizedBox(
+          height: 500,
+          child: ListView.separated(
+            itemCount: state.manutencoes.length,
+            separatorBuilder: (context, index) => const DividerCustom(),
+            itemBuilder: (context, index) {
+              final manutencao = state.manutencoes[index];
+              return HistoricoManutencao(manutencao: manutencao);
+            },
+          ),
+        ),
         const Spacer(),
         Padding(
           padding: const EdgeInsets.only(bottom: 28.0),
