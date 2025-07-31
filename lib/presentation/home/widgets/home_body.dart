@@ -14,18 +14,21 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(32.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Center(child: HomeTitle(text: 'Bem-vindo ${state.nome}')),
-          const HomeButton(),
-          const SizedBox(height: 20.0),
-          const HomeTitle(text: 'Seus Veículos'),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.5,
-            child: HomeCardVeiculo(state: state),
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Center(child: HomeTitle(text: 'Bem-vindo ${state.nome}')),
+            const HomeButton(),
+            const SizedBox(height: 20.0),
+            const HomeTitle(text: 'Seus Veículos'),
+            const Divider(),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.5,
+              child: HomeCardVeiculo(state: state),
+            ),
+          ],
+        ),
       ),
     );
   }

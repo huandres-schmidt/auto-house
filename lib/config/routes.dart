@@ -1,5 +1,6 @@
 import 'package:autohouse/data/models/manutencao_veiculo_model.dart';
 import 'package:autohouse/presentation/detalhes_manutencao/detalhes_manutencao_screen.dart';
+import 'package:autohouse/presentation/introducao_screen.dart';
 import 'package:autohouse/presentation/manutencao/manutencao_screen.dart';
 import 'package:autohouse/presentation/veiculo/bloc/veiculo_bloc.dart';
 import 'package:autohouse/presentation/veiculo/veiculo_screen.dart';
@@ -23,6 +24,7 @@ enum NavigationFlow { simple, modalBottomUp }
 
 enum AppRoutes {
   root('/', NavigationFlow.simple),
+  inicio('/inicio', NavigationFlow.simple),
   home('/home', NavigationFlow.simple),
   adicionarVeiculo('/adicionar-veiculo', NavigationFlow.simple),
   historicoVeiculo('/historico-veiculo', NavigationFlow.simple),
@@ -53,7 +55,7 @@ class Routes {
       AppRoutes.adicionarVeiculo => AdicionarScreen(
         adicionarVeiculoBloc: injector.getIt.get<AdicionarVeiculoBloc>(),
       ),
-      AppRoutes.root => InicioScreen(),
+      AppRoutes.root => const IntroducaoScreen(),
       AppRoutes.historicoVeiculo => HistoricoScreen(
         historicoBloc: injector.getIt.get<HistoricoBloc>(),
         veiculo: settings.arguments as VeiculoModel,
@@ -71,6 +73,7 @@ class Routes {
       AppRoutes.veiculos => VeiculoScreen(
         veiculoBloc: injector.getIt.get<VeiculoBloc>(),
       ),
+      AppRoutes.inicio => InicioScreen(),
     };
 
     return switch (appRoute.flow) {

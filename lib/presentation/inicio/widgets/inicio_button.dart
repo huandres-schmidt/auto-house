@@ -14,13 +14,14 @@ class InicioButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
+          backgroundColor: ColorsConstants.intotheGreen,
           minimumSize: Size.fromHeight(
             MediaQuery.of(context).size.height * 0.065,
           ),
         ),
         child: const Text(
           'ENTRAR',
-          style: TextStyle(fontSize: 16.0, color: ColorsConstants.intotheGreen),
+          style: TextStyle(fontSize: 16.0, color: ColorsConstants.whiteEdgar),
         ),
       ),
     );

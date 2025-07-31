@@ -18,66 +18,68 @@ class DetalhesManutencaoScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorsConstants.whiteSolid,
       appBar: const AppBarPadrao(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const SizedBox(height: 20),
-          const Center(child: HomeTitle(text: 'Detalhes da Manutenção')),
-          DetalhesManutencaoList(
-            isSvg: true,
-            assets: manutencao.veiculo?.marca?.asset ?? '',
-            title: "Modelo",
-            trailing: manutencao.veiculo?.modelo ?? '',
-          ),
-          DetalhesManutencaoList(
-            assets: manutencao.manutecao?.tipo?.asset,
-            title: "Tipo",
-            trailing: manutencao.manutecao?.tipo?.tipo ?? '',
-          ),
-          DetalhesManutencaoList(
-            assets: AssetsConstants.iconPeca,
-            title: "Nome da Peça",
-            trailing: manutencao.manutecao?.nomePeca ?? '',
-          ),
-          DetalhesManutencaoList(
-            assets: AssetsConstants.iconMarca,
-            title: "Marca",
-            trailing: manutencao.manutecao?.marca ?? '',
-          ),
-          DetalhesManutencaoList(
-            assets: AssetsConstants.iconQuilometragem,
-            title: "Quilometragem",
-            trailing: manutencao.manutecao?.quilometragem ?? '',
-          ),
-          DetalhesManutencaoList(
-            assets: AssetsConstants.iconAno,
-            title: "Data",
-            trailing: manutencao.manutecao?.data ?? '',
-          ),
-          DetalhesManutencaoList(
-            iconData: Icons.attach_money,
-            title: "Valor R\$",
-            trailing: manutencao.manutecao?.valor?.toStringAsFixed(2) ?? '0.00',
-          ),
-          const DividerCustom(),
-          Column(
-            children: [
-              Text(
-                'Observação',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: FontConstants.inter,
-                  fontWeight: FontWeight.bold,
-                  color: ColorsConstants.intotheGreen,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 20),
+            const Center(child: HomeTitle(text: 'Detalhes da Manutenção')),
+            DetalhesManutencaoList(
+              isSvg: true,
+              assets: manutencao.veiculo?.marca?.asset ?? '',
+              title: "Modelo",
+              trailing: manutencao.veiculo?.modelo ?? '',
+            ),
+            DetalhesManutencaoList(
+              assets: manutencao.manutecao?.tipo?.asset,
+              title: "Tipo",
+              trailing: manutencao.manutecao?.tipo?.tipo ?? '',
+            ),
+            DetalhesManutencaoList(
+              assets: AssetsConstants.iconPeca,
+              title: "Nome da Peça",
+              trailing: manutencao.manutecao?.nomePeca ?? '',
+            ),
+            DetalhesManutencaoList(
+              assets: AssetsConstants.iconMarca,
+              title: "Marca",
+              trailing: manutencao.manutecao?.marca ?? '',
+            ),
+            DetalhesManutencaoList(
+              assets: AssetsConstants.iconQuilometragem,
+              title: "Quilometragem",
+              trailing: manutencao.manutecao?.quilometragem ?? '',
+            ),
+            DetalhesManutencaoList(
+              assets: AssetsConstants.iconAno,
+              title: "Data",
+              trailing: manutencao.manutecao?.data ?? '',
+            ),
+            DetalhesManutencaoList(
+              iconData: Icons.attach_money,
+              title: "Valor R\$",
+              trailing: manutencao.manutecao?.valor?.toStringAsFixed(2) ?? '0.00',
+            ),
+            const DividerCustom(),
+            Column(
+              children: [
+                Text(
+                  'Observação',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: FontConstants.inter,
+                    fontWeight: FontWeight.bold,
+                    color: ColorsConstants.intotheGreen,
+                  ),
                 ),
-              ),
-              Text(
-                manutencao.manutecao!.observacao!,
-                style: TextStyle(fontSize: 16, fontFamily: FontConstants.inter),
-              ),
-            ],
-          ),
-        ],
+                Text(
+                  manutencao.manutecao!.observacao!,
+                  style: TextStyle(fontSize: 16, fontFamily: FontConstants.inter),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

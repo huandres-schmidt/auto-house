@@ -16,34 +16,36 @@ class ManutencaoContent extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorsConstants.whiteSolid,
       appBar: const AppBarPadrao(),
-      body: Column(
-        children: [
-          ManutencaoBuscar(
-            onChanged: (value) {
-              context.read<ManutencaoBloc>().add(
-                ManutencaoSearch(search: value),
-              );
-            },
-          ),
-          BlocBuilder<ManutencaoBloc, ManutencaoState>(
-            builder: (context, state) {
-              if (state is ManutencaoLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: ColorsConstants.intotheGreen,
-                  ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ManutencaoBuscar(
+              onChanged: (value) {
+                context.read<ManutencaoBloc>().add(
+                  ManutencaoSearch(search: value),
                 );
-              }
-              if (state is ManutencaoLoaded) {
-                return ManutencaoBody(state: state);
-              }
-              if (state is ManutencaoEmpty) {
-                return const ManutencaoEmptyList();
-              }
-              return const Center();
-            },
-          ),
-        ],
+              },
+            ),
+            BlocBuilder<ManutencaoBloc, ManutencaoState>(
+              builder: (context, state) {
+                if (state is ManutencaoLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: ColorsConstants.intotheGreen,
+                    ),
+                  );
+                }
+                if (state is ManutencaoLoaded) {
+                  return ManutencaoBody(state: state);
+                }
+                if (state is ManutencaoEmpty) {
+                  return const ManutencaoEmptyList();
+                }
+                return const Center();
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

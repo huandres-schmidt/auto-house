@@ -30,7 +30,7 @@ class ManutencaoBloc extends Bloc<ManutencaoEvent, ManutencaoState> {
         emit(const ManutencaoEmpty());
         return;
       }
-      emit(ManutencaoLoaded(manutencoes: result));
+      emit(ManutencaoLoaded(manutencoes: result.reversed.toList()));
     } catch (e) {
       emit(ManutencaoFail(e.toString()));
     }

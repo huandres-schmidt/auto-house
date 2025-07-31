@@ -13,14 +13,14 @@ class InicioLogo extends StatelessWidget {
         SizedBox(height: MediaQuery.of(context).size.height * 0.1),
         Image.asset(
           AssetsConstants.logoHorizontal,
-          color: ColorsConstants.whiteEdgar,
+          color: ColorsConstants.intotheGreen,
         ),
         const SizedBox(height: 13),
         const Center(
           child: Text(
-            'BEM-VINDO',
+            'BEM-VINDO AO APP!',
             style: TextStyle(
-              color: ColorsConstants.whiteEdgar,
+              color: ColorsConstants.intotheGreen,
               fontSize: 18.0,
               fontWeight: FontWeight.w600,
             ),

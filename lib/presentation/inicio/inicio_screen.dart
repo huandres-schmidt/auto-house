@@ -13,7 +13,7 @@ class InicioScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsConstants.intotheGreen,
+      backgroundColor: ColorsConstants.whiteEdgar,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
         child: SingleChildScrollView(

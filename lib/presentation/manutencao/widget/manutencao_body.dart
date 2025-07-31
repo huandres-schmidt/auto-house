@@ -12,7 +12,7 @@ class ManutencaoBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 500,
+      height: MediaQuery.of(context).size.height - 230,
       child: ListView.separated(
         itemCount: state.manutencoes.length,
         separatorBuilder: (context, index) => const DividerCustom(),

@@ -16,7 +16,7 @@ class InicioVersaoApp extends StatelessWidget {
           "${AppSystemInfo.appInfo?.appVersionInfo.appVersionName} - "
           "${AppSystemInfo.appInfo?.appVersionInfo.appVersionCode}",
           style: const TextStyle(
-            color: ColorsConstants.whiteEdgar,
+            color: ColorsConstants.intotheGreen,
             fontSize: 16.0,
             fontWeight: FontWeight.w500,
           ),

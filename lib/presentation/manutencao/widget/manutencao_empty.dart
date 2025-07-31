@@ -10,6 +10,7 @@ class ManutencaoEmptyList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
+        textAlign: TextAlign.center,
         'Nenhuma manutenção encontrada.',
         style: TextStyle(
           color: ColorsConstants.intotheGreen,

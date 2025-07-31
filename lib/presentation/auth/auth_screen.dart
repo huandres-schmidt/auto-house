@@ -1,9 +1,9 @@
+import 'package:autohouse/presentation/introducao_screen.dart';
 import 'package:autohouse/presentation/veiculo/bloc/veiculo_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../home/bloc/home_bloc.dart';
-import '../inicio/inicio_screen.dart';
 import '../manutencao/bloc/manutencao_bloc.dart';
 import '../menu/bloc/menu_bloc.dart';
 import '../menu/menu_screen.dart';
@@ -40,7 +40,7 @@ class AuthScreen extends StatelessWidget {
             ),
           );
         } else {
-          return InicioScreen();
+          return const IntroducaoScreen();
         }
       },
     );
