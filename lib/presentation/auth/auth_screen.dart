@@ -1,4 +1,4 @@
-import 'package:autohouse/presentation/introducao_screen.dart';
+import 'package:autohouse/presentation/instroducao/introducao_screen.dart';
 import 'package:autohouse/presentation/veiculo/bloc/veiculo_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +30,8 @@ class AuthScreen extends StatelessWidget {
       builder: (context, state) {
         if (state is AuthInitial) {
           return const CircularProgressIndicator();
-        } else if (state is Authenticated) {
+        }
+        if (state is Authenticated) {
           return MenuScreen(
             menuParams: MenuParams(
               menuBloc: menuBloc,
@@ -40,7 +41,7 @@ class AuthScreen extends StatelessWidget {
             ),
           );
         } else {
-          return const IntroducaoScreen();
+          return IntroducaoScreen();
         }
       },
     );

@@ -1,6 +1,7 @@
 import 'package:autohouse/data/models/manutencao_veiculo_model.dart';
+import 'package:autohouse/presentation/auth/auth_screen.dart';
 import 'package:autohouse/presentation/detalhes_manutencao/detalhes_manutencao_screen.dart';
-import 'package:autohouse/presentation/introducao_screen.dart';
+import 'package:autohouse/presentation/instroducao/introducao_screen.dart';
 import 'package:autohouse/presentation/manutencao/manutencao_screen.dart';
 import 'package:autohouse/presentation/veiculo/bloc/veiculo_bloc.dart';
 import 'package:autohouse/presentation/veiculo/veiculo_screen.dart';
@@ -17,14 +18,14 @@ import '../presentation/historico/bloc/historico_bloc.dart';
 import '../presentation/historico/historico_screen.dart';
 import '../presentation/home/bloc/home_bloc.dart';
 import '../presentation/home/home_screen.dart';
-import '../presentation/inicio/inicio_screen.dart';
 import '../presentation/manutencao/bloc/manutencao_bloc.dart';
+import '../presentation/menu/bloc/menu_bloc.dart';
 
 enum NavigationFlow { simple, modalBottomUp }
 
 enum AppRoutes {
   root('/', NavigationFlow.simple),
-  inicio('/inicio', NavigationFlow.simple),
+  introducao('/introducao', NavigationFlow.simple),
   home('/home', NavigationFlow.simple),
   adicionarVeiculo('/adicionar-veiculo', NavigationFlow.simple),
   historicoVeiculo('/historico-veiculo', NavigationFlow.simple),
@@ -55,7 +56,12 @@ class Routes {
       AppRoutes.adicionarVeiculo => AdicionarScreen(
         adicionarVeiculoBloc: injector.getIt.get<AdicionarVeiculoBloc>(),
       ),
-      AppRoutes.root => const IntroducaoScreen(),
+      AppRoutes.root => AuthScreen(
+        homeBloc: injector.getIt.get<HomeBloc>(),
+        menuBloc: injector.getIt.get<MenuBloc>(),
+        manutencaoBloc: injector.getIt.get<ManutencaoBloc>(),
+        veiculoBloc: injector.getIt.get<VeiculoBloc>(),
+      ),
       AppRoutes.historicoVeiculo => HistoricoScreen(
         historicoBloc: injector.getIt.get<HistoricoBloc>(),
         veiculo: settings.arguments as VeiculoModel,
@@ -73,7 +79,7 @@ class Routes {
       AppRoutes.veiculos => VeiculoScreen(
         veiculoBloc: injector.getIt.get<VeiculoBloc>(),
       ),
-      AppRoutes.inicio => InicioScreen(),
+      AppRoutes.introducao => IntroducaoScreen(),
     };
 
     return switch (appRoute.flow) {

@@ -12,6 +12,7 @@ class HomeTitle extends StatelessWidget {
     return Text(
       text,
       style: const TextStyle(
+        overflow: TextOverflow.ellipsis,
         fontSize: 24.0,
         fontWeight: FontWeight.bold,
         color: ColorsConstants.intotheGreen,
