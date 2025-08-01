@@ -27,7 +27,7 @@ class VeiculoBloc extends Bloc<VeiculoEvent, VeiculoState> {
         emit(const VeiculoEmpty());
         return;
       }
-      emit(VeiculoLoaded(veiculos: result));
+      emit(VeiculoLoaded(veiculos: result.reversed.toList()));
     } catch (e) {
       emit(VeiculoFail(e.toString()));
     }

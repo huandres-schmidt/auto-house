@@ -1,5 +1,6 @@
 import 'package:autohouse/injector.dart';
 import 'package:autohouse/presentation/home/bloc/home_bloc.dart';
+import 'package:autohouse/presentation/home/widgets/home_versao.dart';
 import 'package:flutter/material.dart';
 
 import '../../../config/routes.dart';
@@ -23,9 +24,9 @@ class HomeListVeiculoEmpty extends StatelessWidget {
           const SizedBox(height: 20.0),
           InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed(
-                AppRoutes.adicionarVeiculo.route,
-              ).then((value) => getIt.get<HomeBloc>().add(const HomeLoad()));
+              Navigator.of(context)
+                  .pushNamed(AppRoutes.adicionarVeiculo.route)
+                  .then((value) => getIt.get<HomeBloc>().add(const HomeLoad()));
             },
             child: Container(
               height: 200,
@@ -49,7 +50,9 @@ class HomeListVeiculoEmpty extends StatelessWidget {
                   Center(
                     child: Text(
                       textAlign: TextAlign.center,
-                      'Você ainda não tem veículos cadastrados\nCadastre o seu primeiro veículo!\nClicando Aqui',
+                      'Você ainda não tem veículos cadastrados\n'
+                      'Cadastre o seu primeiro veículo!'
+                      '\nClicando Aqui',
                       style: TextStyle(
                         fontFamily: FontConstants.inter,
                         fontWeight: FontWeight.bold,
@@ -60,6 +63,8 @@ class HomeListVeiculoEmpty extends StatelessWidget {
               ),
             ),
           ),
+          const Spacer(),
+          const HomeVersao(),
         ],
       ),
     );

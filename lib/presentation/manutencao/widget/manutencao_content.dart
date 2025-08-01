@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/constants/colors_contants.dart';
 import '../../components/app_bar_padrao.dart';
+import '../../components/message_fail.dart';
 import '../bloc/manutencao_bloc.dart';
 import 'manutencao_empty.dart';
 
@@ -40,6 +41,16 @@ class ManutencaoContent extends StatelessWidget {
                 }
                 if (state is ManutencaoEmpty) {
                   return const ManutencaoEmptyList();
+                }
+                if (state is ManutencaoFail) {
+                  return MessageFail(
+                    message: state.message,
+                    onPressed: () {
+                      context.read<ManutencaoBloc>().add(
+                        const ManutencaoLoad(),
+                      );
+                    },
+                  );
                 }
                 return const Center();
               },

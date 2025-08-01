@@ -19,7 +19,6 @@ class IntroducaoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IntroductionScreen(
-      animationDuration: 350,
       pages: [
         PageViewModel(
           decoration: style,

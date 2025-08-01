@@ -1,0 +1,2 @@
+C:/Users/huandres-schmidt/Desktop/auto-house/android/app/.cxx/RelWithDebInfo/3r284t2c/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/huandres-schmidt/Desktop/auto-house/android/app/.cxx/RelWithDebInfo/3r284t2c/x86_64/CMakeFiles/rebuild_cache.dir

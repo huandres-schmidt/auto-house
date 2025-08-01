@@ -1,3 +1,4 @@
+import 'package:autohouse/presentation/components/message_fail.dart';
 import 'package:autohouse/presentation/veiculo/widget/veiculo_body.dart';
 import 'package:autohouse/presentation/veiculo/widget/veiculo_empty_list.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,14 @@ class VeiculoContent extends StatelessWidget {
           }
           if (state is VeiculoEmpty) {
             return const VeiculoEmptyList();
+          }
+          if (state is VeiculoFail) {
+            return MessageFail(
+              message: state.message,
+              onPressed: () {
+                context.read<VeiculoBloc>().add(const VeiculoLoad());
+              },
+            );
           }
           return const Center();
         },

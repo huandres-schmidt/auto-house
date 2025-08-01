@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/constants/colors_contants.dart';
 import '../../components/app_bar_padrao.dart';
+import '../../components/message_fail.dart';
 import '../bloc/home_bloc.dart';
 import 'home_body.dart';
 
@@ -23,6 +24,14 @@ class HomeContent extends StatelessWidget {
           }
           if (state is HomeVeiculoEmpty) {
             return HomeListVeiculoEmpty(nome: state.nome ?? '');
+          }
+          if (state is HomeFail) {
+            return MessageFail(
+              message: state.message,
+              onPressed: () {
+                context.read<HomeBloc>().add(const HomeLoad());
+              },
+            );
           }
           return const Center();
         },
