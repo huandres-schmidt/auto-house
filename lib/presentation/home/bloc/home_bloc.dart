@@ -32,7 +32,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         return;
       }
 
-      emit(HomeLoaded(veiculos: veiculos, nome: nome ?? ''));
+      emit(HomeLoaded(veiculos: veiculos.reversed.toList(), nome: nome ?? ''));
     } catch (e) {
       emit(HomeFail(message: e.toString()));
     }

@@ -28,7 +28,6 @@ class DetalhesManutencaoList extends StatelessWidget {
       assets!,
       width: 25,
       height: 25,
-      color: ColorsConstants.intotheGreen,
     );
   }
 
