@@ -84,4 +84,76 @@ class DialogCustom {
       },
     );
   }
+
+  static Future<void> dialogConfirm(
+    BuildContext context,
+    String title,
+    String content,
+    Function() onPressed,
+  ) async {
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          icon: const Icon(Icons.warning, color: Colors.orange, size: 60),
+          title: Text(title, style: TextStyle(fontFamily: FontConstants.inter)),
+          backgroundColor: ColorsConstants.whiteSolid,
+          content: Text(
+            content,
+            style: TextStyle(fontFamily: FontConstants.inter),
+            textAlign: TextAlign.center,
+          ),
+
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: ElevatedButton(
+                    onPressed: onPressed,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                      textStyle: const TextStyle(
+                        fontSize: 13.0,
+                        color: Colors.white,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    child: const Text(
+                      'OK',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10.0),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: ColorsConstants.intotheGreen,
+                      textStyle: const TextStyle(
+                        fontSize: 13.0,
+                        color: Colors.white,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    child: const Text(
+                      'Cancelar',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
 }

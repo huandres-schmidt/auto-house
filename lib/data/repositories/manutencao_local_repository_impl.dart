@@ -10,9 +10,11 @@ class ManutencaoLocalRepositoryImpl extends BaseLocalDataSource<ManutencaoModel>
     : super(appDatabase, TableName.manutencao, ManutencaoModel.fromJson);
 
   @override
-  Future<void> deleteManutencao(String id) {
-    // TODO: implement deleteManutencao
-    throw UnimplementedError();
+  Future<void> deleteManutencao(int id) async {
+    await delete(
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 
   @override

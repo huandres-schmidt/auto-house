@@ -1,4 +1,6 @@
 import 'package:autohouse/data/models/manutencao_veiculo_model.dart';
+import 'package:autohouse/injector.dart';
+import 'package:autohouse/presentation/historico/bloc/historico_bloc.dart';
 import 'package:flutter/material.dart';
 
 import '../../../config/routes.dart';
@@ -22,12 +24,7 @@ class HistoricoManutencao extends StatelessWidget {
       child: Card(
         color: ColorsConstants.whiteSolid,
         child: ListTile(
-          onTap: () {
-            Navigator.of(context).pushNamed(
-              AppRoutes.detalhesManutencao.route,
-              arguments: manutencao,
-            );
-          },
+          onTap: () => _onPressed(context),
           leading: Image.asset(
             manutencao?.manutecao?.tipo?.asset ?? '',
             color: manutencao?.manutecao?.tipo?.color,
@@ -50,5 +47,18 @@ class HistoricoManutencao extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _onPressed(BuildContext context) {
+    Navigator
+        .of(context)
+        .pushNamed(
+      AppRoutes.detalhesManutencao.route,
+      arguments: manutencao,
+    ).then((_) {
+      getIt.get<HistoricoBloc>().add(
+        HistoricoLoad(manutencao!.veiculo!.id!),
+      );
+    });
   }
 }

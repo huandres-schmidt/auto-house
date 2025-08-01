@@ -22,3 +22,12 @@ final class ManutencaoSearch extends ManutencaoEvent {
   @override
   List<Object?> get props => [search];
 }
+
+final class ManutencaoDelete extends ManutencaoEvent {
+  const ManutencaoDelete({required this.manutencao});
+
+  final ManutencaoModel manutencao;
+
+  @override
+  List<Object?> get props => [manutencao];
+}

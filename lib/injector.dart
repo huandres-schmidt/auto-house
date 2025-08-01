@@ -1,6 +1,7 @@
 import 'package:autohouse/presentation/adicionar_manutencao/bloc/adicionar_manutencao_bloc.dart';
 import 'package:autohouse/presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
 import 'package:autohouse/presentation/auth/bloc/auth_bloc.dart';
+import 'package:autohouse/presentation/detalhes_manutencao/bloc/detalhes_manutencao_bloc.dart';
 import 'package:autohouse/presentation/historico/bloc/historico_bloc.dart';
 import 'package:autohouse/presentation/home/bloc/home_bloc.dart';
 import 'package:autohouse/presentation/manutencao/bloc/manutencao_bloc.dart';
@@ -112,6 +113,10 @@ final class InjectorImpl extends Injector {
 
     getIt.registerSingleton<VeiculoBloc>(
       VeiculoBloc(getIt.get<VeiculoController>()),
+    );
+
+    getIt.registerSingleton<DetalhesManutencaoBloc>(
+      DetalhesManutencaoBloc(getIt.get<ManutencaoController>()),
     );
 
     return InjectorImpl._(getIt);

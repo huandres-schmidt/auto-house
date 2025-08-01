@@ -14,6 +14,7 @@ import '../presentation/adicionar_manutencao/bloc/adicionar_manutencao_bloc.dart
 import '../presentation/adicionar_veiculo/adicionar_veiculo_screen.dart';
 import '../presentation/adicionar_veiculo/bloc/adicionar_veiculo_bloc.dart';
 import '../presentation/components/animation/modal_page_route.dart';
+import '../presentation/detalhes_manutencao/bloc/detalhes_manutencao_bloc.dart';
 import '../presentation/historico/bloc/historico_bloc.dart';
 import '../presentation/historico/historico_screen.dart';
 import '../presentation/home/bloc/home_bloc.dart';
@@ -72,6 +73,7 @@ class Routes {
       ),
       AppRoutes.detalhesManutencao => DetalhesManutencaoScreen(
         manutencao: settings.arguments as ManutencaoVeiculoModel,
+        detalhesManutencaoBloc: injector.getIt.get<DetalhesManutencaoBloc>(),
       ),
       AppRoutes.manutencoes => ManutencaoScreen(
         manutencaoBloc: injector.getIt.get<ManutencaoBloc>(),

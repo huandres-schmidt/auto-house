@@ -68,4 +68,8 @@ class ManutencaoController {
           e.manutecao!.marca!.toLowerCase().contains(searchLower);
     }).toList();
   }
+
+  Future<void> deleteManutencao(ManutencaoModel manutencao) async {
+    await _manutencaoLocalRepository.deleteManutencao(manutencao.id!);
+  }
 }

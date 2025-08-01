@@ -1,9 +1,10 @@
 import 'dart:async';
 
-import 'package:autohouse/data/models/manutencao_veiculo_model.dart';
+import 'package:autohouse/data/models/manutencao_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../../data/models/manutencao_veiculo_model.dart';
 import '../../../domain/controller/manutencao_controller.dart';
 
 part 'manutencao_event.dart';
@@ -15,6 +16,7 @@ class ManutencaoBloc extends Bloc<ManutencaoEvent, ManutencaoState> {
     : super(const ManutencaoInitial()) {
     on<ManutencaoLoad>(_onManutencaoLoad);
     on<ManutencaoSearch>(_onManutencaoSearch);
+    on<ManutencaoDelete>(_onManutencaoDelete);
   }
 
   final ManutencaoController _manutencaoController;
@@ -50,5 +52,18 @@ class ManutencaoBloc extends Bloc<ManutencaoEvent, ManutencaoState> {
     }
 
     emit(ManutencaoLoaded(manutencoes: search));
+  }
+
+  FutureOr<void> _onManutencaoDelete(
+    ManutencaoDelete event,
+    Emitter<ManutencaoState> emit,
+  ) async {
+    try {
+      await _manutencaoController.deleteManutencao(event.manutencao);
+      final result = await _manutencaoController.getListManutencao();
+      emit(ManutencaoLoaded(manutencoes: result.reversed.toList()));
+    } catch (e) {
+      emit(ManutencaoFail(e.toString()));
+    }
   }
 }
