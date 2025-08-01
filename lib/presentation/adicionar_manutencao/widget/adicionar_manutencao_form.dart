@@ -30,6 +30,8 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
   final TextEditingController _quilometragem = TextEditingController();
   final TextEditingController _valor = TextEditingController();
   final TextEditingController _observacao = TextEditingController();
+  final TextEditingController _data = TextEditingController();
+
   Tipo? _tipo;
 
   @override
@@ -78,7 +80,7 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
                 inputFormatters: const [],
                 keyboardType: TextInputType.text,
                 controller: _peca,
-                validator: (value) => _onAdicionarValidarTipo(value),
+                validator: (value) => _onValidarCampos(value),
                 hintText: 'Peça Substituída',
                 assetsConstants: AssetsConstants.iconPeca,
               ),
@@ -87,7 +89,7 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
                 inputFormatters: const [],
                 keyboardType: TextInputType.text,
                 controller: _marca,
-                validator: (value) => _onAdicionarValidarTipo(value),
+                validator: (value) => _onValidarCampos(value),
                 hintText: 'Marca da Peça',
                 assetsConstants: AssetsConstants.iconMarca,
               ),
@@ -96,26 +98,34 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
                 inputFormatters: [MaskTextInputFormatter(mask: '###.###')],
                 keyboardType: TextInputType.number,
                 controller: _quilometragem,
-                validator: (value) => _onAdicionarValidarTipo(value),
+                validator: (value) => _onValidarCampos(value),
                 hintText: 'Quilometragem',
                 assetsConstants: AssetsConstants.iconQuilometragem,
               ),
-              const SizedBox(height: 10),
               const SizedBox(height: 10),
               AdicionarVeiculoText(
                 inputFormatters: const [],
                 keyboardType: TextInputType.number,
                 controller: _valor,
-                validator: (value) => _onAdicionarValidarTipo(value),
+                validator: (value) => _onValidarCampos(value),
                 hintText: 'Valor',
                 icon: Icons.attach_money,
+              ),
+              const SizedBox(height: 10),
+              AdicionarVeiculoText(
+                inputFormatters: [MaskTextInputFormatter(mask: '##/##/####')],
+                keyboardType: TextInputType.number,
+                controller: _data,
+                validator: (value) => null,
+                hintText: 'Data',
+                assetsConstants: AssetsConstants.iconAno,
               ),
               const SizedBox(height: 10),
               AdicionarVeiculoText(
                 inputFormatters: const [],
                 keyboardType: TextInputType.text,
                 controller: _observacao,
-                validator: (value) => _onAdicionarValidarTipo(value),
+                validator: (value) => null,
                 hintText: 'Observação',
                 icon: Icons.warning_amber,
               ),
@@ -130,9 +140,9 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
     );
   }
 
-  String? _onAdicionarValidarTipo(String? value) {
+  String? _onValidarCampos(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Tipo é obrigatório';
+      return 'Campo é obrigatório';
     }
     return null;
   }
@@ -144,9 +154,14 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
       final marca = _marca.text;
       final quilometragem = _quilometragem.text;
       final valor = _valor.text;
-      final data = DateTime.now().toIso8601String().formataData();
-      final observacao = _observacao.text;
 
+      if (_data.text.isEmpty) {
+        _data.text = DateTime.now().toIso8601String().formataData();
+      }
+
+      if (_observacao.text.isEmpty) {
+        _observacao.text = 'Nenhuma observação';
+      }
 
       ManutencaoModel manutencao = ManutencaoModel(
         tipo: tipo,
@@ -154,9 +169,9 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
         nomePeca: peca,
         marca: marca,
         quilometragem: quilometragem,
-        data: data,
+        data: _data.text,
         valor: double.tryParse(valor),
-        observacao: observacao,
+        observacao: _observacao.text,
       );
 
       context.read<AdicionarManutencaoBloc>().add(
