@@ -25,8 +25,6 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
 
   final TextEditingController _placa = TextEditingController();
 
-  final TextEditingController _quilometragem = TextEditingController();
-
   final TextEditingController _ano = TextEditingController();
 
   Marcas? _marca;
@@ -128,15 +126,6 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
               const SizedBox(height: 10),
               AdicionarVeiculoText(
                 keyboardType: TextInputType.number,
-                inputFormatters: [MaskTextInputFormatter(mask: '###.###')],
-                controller: _quilometragem,
-                validator: (value) => _onAdicionarValidarQuilometragem(value),
-                assetsConstants: AssetsConstants.iconMotor,
-                hintText: "Quilometragem",
-              ),
-              const SizedBox(height: 10),
-              AdicionarVeiculoText(
-                keyboardType: TextInputType.number,
                 inputFormatters: [MaskTextInputFormatter(mask: '####')],
                 controller: _ano,
                 validator: (value) => _onAdicionarValidarAno(value),
@@ -192,13 +181,6 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
     return null;
   }
 
-  String? _onAdicionarValidarQuilometragem(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Quilometragem é obrigatório';
-    }
-    return null;
-  }
-
   String? _onAdicionarValidarAno(String? value) {
     if (value == null || value.isEmpty) {
       return 'Ano é obrigatório';
@@ -209,13 +191,11 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
   void _onAdicionarVeiculoSubmit(BuildContext context) {
     if (formKey.currentState?.validate() ?? false) {
       final placa = _placa.text;
-      final quilometragem = _quilometragem.text;
       final ano = _ano.text;
 
       VeiculoModel veiculo = VeiculoModel(
         modelo: _modeloSelecionado?.modelo,
         placa: placa,
-        quilometragem: quilometragem,
         ano: int.parse(ano),
         marca: _marca,
       );

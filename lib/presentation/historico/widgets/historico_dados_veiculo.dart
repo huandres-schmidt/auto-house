@@ -12,7 +12,7 @@ class HistoricoDadosVeiculo extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        veiculo.modelo!,
+        veiculo.modelo ?? '',
         style: TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.bold,
@@ -21,7 +21,7 @@ class HistoricoDadosVeiculo extends StatelessWidget {
       ),
       subtitle: Text(
         'Placa: ${veiculo.placa}\n'
-            'Ano: ${veiculo.ano}\n',
+        'Ano: ${veiculo.ano}\n',
         style: TextStyle(fontSize: 16, fontFamily: FontConstants.inter),
       ),
       trailing: Image.asset(veiculo.marca!.asset, height: 80),

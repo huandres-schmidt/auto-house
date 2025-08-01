@@ -3,16 +3,14 @@ import 'package:flutter/cupertino.dart';
 import '../../../core/constants/colors_contants.dart';
 import '../../../core/constants/font_contants.dart';
 
-class ManutencaoEmptyList extends StatelessWidget {
-  const ManutencaoEmptyList({super.key});
+class VeiculoEmptyList extends StatelessWidget {
+  const VeiculoEmptyList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 15.0),
+    return Center(
       child: Text(
-        textAlign: TextAlign.center,
-        'Nenhuma manutenção encontrada.',
+        'Nenhum veículo encontrada.',
         style: TextStyle(
           color: ColorsConstants.intotheGreen,
           fontSize: 18.0,

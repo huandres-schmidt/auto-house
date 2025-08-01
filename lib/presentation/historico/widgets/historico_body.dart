@@ -24,7 +24,7 @@ class HistoricoBody extends StatelessWidget {
         const HistoricoText(),
         const Divider(indent: 20.0, endIndent: 20.0),
         SizedBox(
-          height: 500,
+          height: MediaQuery.of(context).size.height * 0.5,
           child: ListView.separated(
             itemCount: state.manutencoes.length,
             separatorBuilder: (context, index) => const DividerCustom(),
@@ -37,9 +37,12 @@ class HistoricoBody extends StatelessWidget {
         const Spacer(),
         Padding(
           padding: const EdgeInsets.only(bottom: 28.0),
-          child: ElevatedButtonIcon(
-            label: 'Adicionar Manutenção',
-            onPressed: () => _onPressed(context),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: ElevatedButtonIcon(
+              label: 'Adicionar Manutenção',
+              onPressed: () => _onPressed(context),
+            ),
           ),
         ),
       ],

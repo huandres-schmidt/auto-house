@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../config/routes.dart';
 import '../../../core/constants/colors_contants.dart';
+import '../../../core/constants/font_contants.dart';
 
 class VeiculoBody extends StatelessWidget {
   const VeiculoBody({super.key, required this.state});
@@ -39,12 +40,14 @@ class VeiculoBody extends StatelessWidget {
                 height: 40,
                 width: 40,
               ),
-              title: Text('${veiculo?.modelo}'),
-              trailing: const Icon(
-                Icons.arrow_forward_ios,
-                size: 20,
+              title: Text(
+                '${veiculo?.modelo}',
+                style: TextStyle(
+                  fontFamily: FontConstants.inter,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              subtitle: Text('${veiculo?.placa} - ${veiculo?.ano}'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 20),
             ),
           );
         },

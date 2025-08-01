@@ -6,7 +6,6 @@ class VeiculoModel extends BaseModel {
   final int? id;
   final String? placa;
   final String? modelo;
-  final String? quilometragem;
   final int? ano;
   final Marcas? marca;
 
@@ -14,7 +13,6 @@ class VeiculoModel extends BaseModel {
     this.id,
     this.placa,
     this.modelo,
-    this.quilometragem,
     this.ano,
     this.marca,
   });
@@ -24,7 +22,6 @@ class VeiculoModel extends BaseModel {
       id: json['id'] as int?,
       placa: json['placa'] as String?,
       modelo: json['modelo'] as String?,
-      quilometragem: json['quilometragem'] as String?,
       ano: json['ano'] as int?,
       marca:
           json['marca'] != null
@@ -39,7 +36,6 @@ class VeiculoModel extends BaseModel {
       'id': id,
       'placa': placa,
       'modelo': modelo,
-      'quilometragem': quilometragem,
       'ano': ano,
       'marca': marca?.name,
     };
@@ -51,7 +47,6 @@ class VeiculoModel extends BaseModel {
         "id: $id, "
         "placa: $placa,"
         " modelo: $modelo, "
-        "quilometragem: $quilometragem, "
         "ano: $ano, "
         "marca: ${marca?.name}"
         ")";

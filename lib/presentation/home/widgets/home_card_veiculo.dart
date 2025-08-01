@@ -1,4 +1,5 @@
 import 'package:autohouse/core/constants/colors_contants.dart';
+import 'package:autohouse/core/constants/font_contants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../config/routes.dart';
@@ -29,9 +30,14 @@ class HomeCardVeiculo extends StatelessWidget {
               height: 40,
               width: 40,
             ),
-            title: Text('${veiculo?.modelo}'),
+            title: Text(
+              '${veiculo?.modelo}',
+              style: TextStyle(
+                fontFamily: FontConstants.inter,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             trailing: const Icon(Icons.arrow_forward_ios, size: 20),
-            subtitle: Text('${veiculo?.placa} - ${veiculo?.ano}'),
           ),
         );
       },

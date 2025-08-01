@@ -89,11 +89,14 @@ class DetalhesManutencaoContent extends StatelessWidget {
                           color: ColorsConstants.intotheGreen,
                         ),
                       ),
-                      Text(
-                        state.manutencao?.manutecao?.observacao ?? '',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: FontConstants.inter,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          state.manutencao?.manutecao?.observacao ?? '',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: FontConstants.inter,
+                          ),
                         ),
                       ),
                     ],
