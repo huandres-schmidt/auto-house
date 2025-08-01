@@ -51,16 +51,16 @@ flutter:
     - assets/images/icon/manutencao_corretiva.png
     - assets/images/icon/manutencao_preventiva.png
     #Marcas
-    - assets/images/marca/chevrolet.svg
-    - assets/images/marca/fiat.svg
-    - assets/images/marca/ford.svg
-    - assets/images/marca/honda.svg
-    - assets/images/marca/hyundai.svg
-    - assets/images/marca/jeep.svg
-    - assets/images/marca/peugeot.svg
-    - assets/images/marca/renault.svg
-    - assets/images/marca/toyota.svg
-    - assets/images/marca/volkswagen.svg
+    - assets/images/marca/chevrolet.png
+    - assets/images/marca/fiat.png
+    - assets/images/marca/ford.png
+    - assets/images/marca/honda.png
+    - assets/images/marca/hyundai.png
+    - assets/images/marca/jeep.png
+    - assets/images/marca/peugeot.png
+    - assets/images/marca/renault.png
+    - assets/images/marca/toyota.png
+    - assets/images/marca/volkswagem.png
     #IconLogo
     - assets/images/logo/icon_logo.png
 

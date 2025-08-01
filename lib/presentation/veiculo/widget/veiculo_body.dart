@@ -1,7 +1,6 @@
 import 'package:autohouse/presentation/components/divider_custom.dart';
 import 'package:autohouse/presentation/veiculo/bloc/veiculo_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../config/routes.dart';
 import '../../../core/constants/colors_contants.dart';
@@ -35,7 +34,7 @@ class VeiculoBody extends StatelessWidget {
                   arguments: veiculo,
                 );
               },
-              leading: SvgPicture.asset(
+              leading: Image.asset(
                 veiculo?.marca?.asset ?? '',
                 height: 40,
                 width: 40,

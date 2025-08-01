@@ -39,7 +39,6 @@ class DetalhesManutencaoContent extends StatelessWidget {
                     child: HomeTitle(text: 'Detalhes da Manutenção'),
                   ),
                   DetalhesManutencaoList(
-                    isSvg: true,
                     assets: state.manutencao?.veiculo?.marca?.asset ?? '',
                     title: "Modelo",
                     trailing: state.manutencao?.veiculo?.modelo ?? '',

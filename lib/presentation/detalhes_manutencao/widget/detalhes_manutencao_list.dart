@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../core/constants/colors_contants.dart';
 import '../../../core/constants/font_contants.dart';
@@ -24,14 +23,7 @@ class DetalhesManutencaoList extends StatelessWidget {
     if (iconData != null) {
       return Icon(iconData, color: ColorsConstants.intotheGreen, size: 25);
     }
-    if (isSvg) {
-      return SvgPicture.asset(
-        assets!,
-        width: 25,
-        height: 25,
-        color: ColorsConstants.intotheGreen,
-      );
-    }
+
     return Image.asset(
       assets!,
       width: 25,

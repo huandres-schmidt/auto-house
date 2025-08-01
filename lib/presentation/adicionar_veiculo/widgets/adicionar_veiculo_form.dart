@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 import '../../../core/constants/assets_contants.dart';
@@ -67,7 +66,7 @@ class _AdicionarVeiculoFormState extends State<AdicionarVeiculoForm> {
                         value: marca,
                         child: Row(
                           children: [
-                            SvgPicture.asset(
+                            Image.asset(
                               marca.asset,
                               height: 30,
                               width: 30,

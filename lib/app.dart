@@ -24,6 +24,7 @@ class AutoHouseApp extends StatelessWidget {
       },
       child: MaterialApp(
         title: 'AutoHouse',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue),
         onGenerateRoute: (settings) => Routes.router(settings, injector),
         home: AuthScreen(

@@ -1,6 +1,5 @@
 import 'package:autohouse/core/constants/colors_contants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../config/routes.dart';
 import '../bloc/home_bloc.dart';
@@ -25,7 +24,7 @@ class HomeCardVeiculo extends StatelessWidget {
                 context,
               ).pushNamed(AppRoutes.historicoVeiculo.route, arguments: veiculo);
             },
-            leading: SvgPicture.asset(
+            leading: Image.asset(
               veiculo?.marca?.asset ?? '',
               height: 40,
               width: 40,

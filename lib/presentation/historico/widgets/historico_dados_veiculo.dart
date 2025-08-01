@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../core/constants/font_contants.dart';
 import '../../../data/models/veiculo_model.dart';
@@ -25,7 +24,7 @@ class HistoricoDadosVeiculo extends StatelessWidget {
             'Ano: ${veiculo.ano}\n',
         style: TextStyle(fontSize: 16, fontFamily: FontConstants.inter),
       ),
-      trailing: SvgPicture.asset(veiculo.marca!.asset, height: 80),
+      trailing: Image.asset(veiculo.marca!.asset, height: 80),
     );
   }
 }

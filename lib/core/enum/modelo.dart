@@ -8,7 +8,8 @@ enum ModeloChevrolet {
   silverado('Silverado 2025'),
   trailblazer('Trailblazer'),
   spin('Spin'),
-  corsa('Corsa');
+  corsaWind('Corsa Wind'),
+  corsaSedan('Corsa Sedan');
 
   const ModeloChevrolet(this.modelo);
   final String modelo;
@@ -31,6 +32,7 @@ enum ModeloVolkswagen {
   virtus('Virtus'),
   golfGTI('Golf GTI'),
   saveiro('Saveiro'),
+  voyoge('Voyage'),
   jettaGLI('Jetta GLI');
 
   const ModeloVolkswagen(this.modelo);
