@@ -33,7 +33,7 @@ class VeiculoContent extends StatelessWidget {
           }
           if (state is VeiculoFail) {
             return MessageFail(
-              message: state.message,
+              message: state.message ,
               onPressed: () {
                 context.read<VeiculoBloc>().add(const VeiculoLoad());
               },
