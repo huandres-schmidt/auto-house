@@ -47,6 +47,7 @@ class DetalhesManutencaoContent extends StatelessWidget {
                     assets: state.manutencao?.manutecao?.tipo?.asset,
                     title: "Tipo",
                     trailing: state.manutencao?.manutecao?.tipo?.tipo ?? '',
+                    color: state.manutencao?.manutecao?.tipo?.color,
                   ),
                   DetalhesManutencaoList(
                     assets: AssetsConstants.iconPeca,
@@ -62,6 +63,7 @@ class DetalhesManutencaoContent extends StatelessWidget {
                     assets: AssetsConstants.iconQuilometragem,
                     title: "Quilometragem",
                     trailing: state.manutencao?.manutecao?.quilometragem ?? '',
+                    color: ColorsConstants.intotheGreen,
                   ),
                   DetalhesManutencaoList(
                     assets: AssetsConstants.iconAno,

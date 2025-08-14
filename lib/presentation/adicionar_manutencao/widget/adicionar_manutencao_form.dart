@@ -130,8 +130,10 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
                 icon: Icons.warning_amber,
               ),
               const Spacer(),
-              AdicionarManutencaoButton(
-                onPressed: () => _onAdicionarVeiculoSubmit(context),
+              SafeArea(
+                child: AdicionarManutencaoButton(
+                  onPressed: () => _onAdicionarVeiculoSubmit(context),
+                ),
               ),
             ],
           ),
@@ -153,7 +155,7 @@ class _AdicionarManutencaoFormState extends State<AdicionarManutencaoForm> {
       final peca = _peca.text;
       final marca = _marca.text;
       final quilometragem = _quilometragem.text;
-      final valor = _valor.text;
+      final valor = _valor.text.replaceAll(',', '.');
 
       if (_data.text.isEmpty) {
         _data.text = DateTime.now().toIso8601String().formataData();

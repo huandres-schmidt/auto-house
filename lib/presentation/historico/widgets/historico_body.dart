@@ -39,9 +39,11 @@ class HistoricoBody extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 28.0),
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.9,
-            child: ElevatedButtonIcon(
-              label: 'Adicionar Manutenção',
-              onPressed: () => _onPressed(context),
+            child: SafeArea(
+              child: ElevatedButtonIcon(
+                label: 'Adicionar Manutenção',
+                onPressed: () => _onPressed(context),
+              ),
             ),
           ),
         ),

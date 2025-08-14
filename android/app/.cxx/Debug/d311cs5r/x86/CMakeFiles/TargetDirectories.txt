@@ -1,0 +1,2 @@
+C:/Users/huandres-schmidt/Desktop/Estudo/auto-house/android/app/.cxx/Debug/d311cs5r/x86/CMakeFiles/edit_cache.dir
+C:/Users/huandres-schmidt/Desktop/Estudo/auto-house/android/app/.cxx/Debug/d311cs5r/x86/CMakeFiles/rebuild_cache.dir

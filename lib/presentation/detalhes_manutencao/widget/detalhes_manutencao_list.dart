@@ -11,6 +11,7 @@ class DetalhesManutencaoList extends StatelessWidget {
     this.isSvg = false,
     required this.title,
     required this.trailing,
+    this.color,
   });
 
   final IconData? iconData;
@@ -18,17 +19,14 @@ class DetalhesManutencaoList extends StatelessWidget {
   final String title;
   final String trailing;
   final bool isSvg;
+  final Color? color;
 
   Widget get leadingIcon {
     if (iconData != null) {
       return Icon(iconData, color: ColorsConstants.intotheGreen, size: 25);
     }
 
-    return Image.asset(
-      assets!,
-      width: 25,
-      height: 25,
-    );
+    return Image.asset(assets!, width: 25, height: 25, color: color);
   }
 
   @override

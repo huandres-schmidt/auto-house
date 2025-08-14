@@ -103,49 +103,36 @@ class DialogCustom {
             style: TextStyle(fontFamily: FontConstants.inter),
             textAlign: TextAlign.center,
           ),
-
           actions: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Center(
-                  child: ElevatedButton(
+                  child: TextButton(
                     onPressed: onPressed,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange,
-                      textStyle: const TextStyle(
-                        fontSize: 13.0,
-                        color: Colors.white,
+                    child: Text(
+                      'Excluir',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 16.0,
+                        fontFamily: FontConstants.inter,
                       ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                    child: const Text(
-                      'OK',
-                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
                 const SizedBox(width: 10.0),
                 Center(
-                  child: ElevatedButton(
+                  child: TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: ColorsConstants.intotheGreen,
-                      textStyle: const TextStyle(
-                        fontSize: 13.0,
-                        color: Colors.white,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                    child: const Text(
+                    child: Text(
                       'Cancelar',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color: Colors.orange,
+                        fontSize: 16.0,
+                        fontFamily: FontConstants.inter,
+                      ),
                     ),
                   ),
                 ),
